@@ -89,7 +89,7 @@ export default function AmbisconicsLabHighlight() {
             </div>
 
             {/* CTA */}
-            <Link href="/ambisonics-lab" className="btn-primary">
+            <Link href="/research-infrastructure#ambisonics-lab" className="btn-primary">
               Learn More About the Lab
             </Link>
           </div>

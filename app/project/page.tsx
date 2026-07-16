@@ -1,179 +1,100 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
+import PageHero from '@/components/PageHero';
+import PlaceholderNotice from '@/components/PlaceholderNotice';
 
 export const metadata: Metadata = {
-  title: 'Project Overview - Synergia',
-  description:
-    'High-level overview of the Synergia project, its structure, objectives, work packages, and roadmap.',
+  title: 'Project',
+  description: 'Motivation, vision, objectives, work packages, methodology, and expected impact of Synergia.',
 };
 
-/**
- * Project overview page
- * Describes the project in detail, including motivation, objectives, and roadmap
- */
+const objectives = [
+  ['Develop multimodal surgical feedback', 'Design and evaluate auditory, vibroacoustic, and spatial-audio interfaces that convey surgical state, anatomical proximity, and AI confidence in real time.'],
+  ['Understand perceptual integration', 'Quantify how visual, auditory, and tactile information is integrated under workload and identify feedback designs that support attention and decision-making.'],
+  ['Connect AI analysis with human-centred interaction', 'Translate surgical scene analysis into meaningful, low-overhead cues for the operating team.'],
+  ['Evaluate clinically relevant use cases', 'Study feasibility and usability in controlled simulation and clinically relevant environments.'],
+];
+
+const workPackages = [
+  ['WP1', 'AI-Assisted Surgical Analysis', 'Real-time analysis of surgical scenes, instrument motion, and anatomical context.'],
+  ['WP2', 'Multisensory Perception and Sonification', 'Perception studies and auditory feedback strategies suited to high-intensity workflows.'],
+  ['WP3', 'Vibroacoustic Sensing and Haptic Feedback', 'Non-visual communication of surgical state, interaction, and system alerts.'],
+  ['WP4', 'Infrastructure and Clinical Translation', 'Integrated laboratory, simulation, and clinical evaluation environments.'],
+];
+
 export default function ProjectPage() {
   return (
-    <div>
-      {/* Hero section */}
-      <section className="bg-gradient-to-br from-academic-navy to-academic-blue text-white py-16">
-        <div className="section-container">
-          <h1 className="text-display mb-6">The Synergia Project</h1>
-          <p className="text-2xl text-blue-100 leading-relaxed">
-            A high-level overview of the project structure, objectives, and work packages
-          </p>
+    <>
+      <PageHero title="The Synergia Project" description="A long-term interdisciplinary initiative connecting intelligent medical systems with human multisensory perception." />
+      <section className="section-container space-y-16">
+        <div className="max-w-4xl">
+          <h2 className="mb-5 text-academic-navy">Motivation</h2>
+          <div className="space-y-4 text-lg leading-relaxed text-academic-gray">
+            <p>Modern operating rooms generate information from imaging systems, tracking data, monitoring streams, and AI-based analysis. Surgeons must interpret this information under time pressure, with limited visual bandwidth and high cognitive load.</p>
+            <p>Synergia investigates feedback strategies that make complex information available through sound, touch, and spatial audio rather than relying solely on visual displays. Ophthalmic and microsurgical workflows provide important contexts for studying precision, situational awareness, and human–AI collaboration.</p>
+          </div>
+        </div>
+
+        <div className="grid gap-8 lg:grid-cols-2">
+          <div>
+            <h2 className="mb-5 text-academic-navy">Vision</h2>
+            <p className="text-lg leading-relaxed text-academic-gray">To establish scientifically grounded approaches for connecting computational analysis with the perceptual capabilities of clinicians in demanding medical environments.</p>
+          </div>
+          <div>
+            <h2 className="mb-5 text-academic-navy">Research Questions</h2>
+            <ul className="space-y-3 text-academic-gray">
+              <li>How can complex surgical information be represented across sensory channels?</li>
+              <li>How do workload, attention, and context affect multisensory integration?</li>
+              <li>How should AI-derived guidance communicate uncertainty without disrupting clinical work?</li>
+              <li>Which evaluation methods support responsible translation into practice?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="mb-7 text-academic-navy">Objectives</h2>
+          <div className="grid gap-6 md:grid-cols-2">
+            {objectives.map(([title, description]) => (
+              <article key={title} className="card p-6">
+                <h3 className="mb-3 text-heading-sm text-academic-blue">{title}</h3>
+                <p className="text-academic-gray">{description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h2 className="mb-7 text-academic-navy">Work Packages</h2>
+          <div className="space-y-5">
+            {workPackages.map(([number, title, description]) => (
+              <article key={number} className="grid gap-3 rounded-lg border-l-4 border-academic-blue bg-academic-light p-6 md:grid-cols-[5rem_1fr]">
+                <strong className="text-academic-blue">{number}</strong>
+                <div><h3 className="mb-2 text-heading-sm text-academic-navy">{title}</h3><p className="text-academic-gray">{description}</p></div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid gap-8 lg:grid-cols-2">
+          <div>
+            <h2 className="mb-5 text-academic-navy">Methodology</h2>
+            <p className="text-academic-gray leading-relaxed">The programme combines computational method development, controlled perception experiments, multimodal interface prototyping, simulation studies, expert assessment, and clinically informed evaluation. Detailed protocols will be documented with the corresponding research outputs.</p>
+          </div>
+          <div>
+            <h2 className="mb-5 text-academic-navy">Expected Impact</h2>
+            <p className="text-academic-gray leading-relaxed">The project aims to advance fundamental knowledge of multisensory integration while developing methods relevant to safer, more interpretable, and more human-centred computer-assisted interventions.</p>
+          </div>
+        </div>
+
+        <div>
+          <h2 className="mb-5 text-academic-navy">Timeline and Milestones</h2>
+          <PlaceholderNotice>Verified project dates, milestone names, deliverables, grant number, and funding amount are required before a public timeline can be published.</PlaceholderNotice>
+        </div>
+
+        <div>
+          <h2 className="mb-5 text-academic-navy">Funding and Institutional Partnership</h2>
+          <p className="text-academic-gray leading-relaxed">Synergia is presented as a Deutsche Forschungsgemeinschaft-funded initiative involving the Technical University of Munich, TU Dresden, clinical partners, and external collaborators. The formal grant wording and complete institutional list require final consortium verification.</p>
         </div>
       </section>
-
-      {/* Main content */}
-      <section className="section-container">
-        <div className="max-w-4xl mx-auto prose prose-lg">
-          <div className="mb-8 rounded-lg border border-slate-200 bg-slate-50 p-6 text-academic-gray">
-            This page provides the high-level overview of the Synergia project. The dedicated scientific work page offers a deeper look at the individual research directions and work packages behind the project.
-          </div>
-
-          {/* Scientific Motivation */}
-          <div className="mb-16">
-            <h2 className="text-heading-lg font-bold text-academic-navy mb-6">
-              Scientific Motivation
-            </h2>
-            <div className="bg-academic-light rounded-lg p-8 border-l-4 border-academic-blue">
-              <p className="text-lg text-academic-gray leading-relaxed">
-                Modern operating rooms generate an abundance of information from imaging systems,
-                tracking data, monitoring streams, and AI-based analysis. Yet surgeons must interpret
-                that information under time pressure, with limited visual bandwidth and high cognitive
-                load. The Synergia project addresses this challenge by developing multimodal feedback
-                strategies that make complex surgical information available through sound, touch, and
-                spatial audio rather than relying solely on visual displays.
-              </p>
-              <p className="mt-4 text-academic-gray leading-relaxed">
-                The project focuses on high-intensity surgical settings, particularly ophthalmic and
-                microsurgical workflows, where precision, situational awareness, and efficient human-AI
-                collaboration are essential. By connecting AI analysis with human perception, Synergia
-                aims to improve guidance, reduce cognitive overload, and support safer and more
-                intuitive surgical interaction.
-              </p>
-            </div>
-          </div>
-
-          {/* Project Objectives */}
-          <div className="mb-16">
-            <h2 className="text-heading-lg font-bold text-academic-navy mb-6">
-              Project Objectives
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                {
-                  title: 'Develop multimodal surgical feedback',
-                  description:
-                    'Design and evaluate auditory, vibroacoustic, and spatial-audio interfaces that convey surgical state, anatomical proximity, and AI confidence in real time.',
-                },
-                {
-                  title: 'Understand perceptual integration',
-                  description:
-                    'Quantify how surgeons integrate visual, auditory, and tactile information under workload, and identify which feedback designs support attention and decision-making.',
-                },
-                {
-                  title: 'Link AI analysis to human-centered interaction',
-                  description:
-                    'Create a real-time sensing and sonification pipeline that translates surgical scene analysis into meaningful, low-overhead cues for the operating team.',
-                },
-                {
-                  title: 'Validate the approach in clinical contexts',
-                  description:
-                    'Test the system in realistic simulation and clinical environments to establish feasibility, usability, and translational relevance for future surgical deployment.',
-                },
-              ].map((objective, idx) => (
-                <div key={idx} className="card p-6">
-                  <h3 className="text-heading-sm font-bold text-academic-blue mb-3">
-                    {objective.title}
-                  </h3>
-                  <p className="text-academic-gray">{objective.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Work Packages */}
-          <div className="mb-16">
-            <h2 className="text-heading-lg font-bold text-academic-navy mb-6">
-              Work Packages
-            </h2>
-            <div className="space-y-6">
-              {[
-                {
-                  title: 'WP1: AI-Assisted Surgical Analysis',
-                  description:
-                    'Develops methods for real-time analysis of surgical scenes, instrument motion, and anatomical context, providing a foundation for context-aware and low-overhead guidance.',
-                },
-                {
-                  title: 'WP2: Multisensory Perception and Sonification',
-                  description:
-                    'Investigates how surgeons perceive auditory and multimodal cues in high-intensity settings and translates this understanding into sonification strategies suited to surgical workflow.',
-                },
-                {
-                  title: 'WP3: Vibroacoustic Sensing and Haptic Feedback',
-                  description:
-                    'Explores tactile and vibroacoustic channels for communicating surgical state and system alerts without increasing visual or auditory burden.',
-                },
-                {
-                  title: 'WP4: Infrastructure and Clinical Translation',
-                  description:
-                    'Combines the Ambisonics laboratory, simulation facilities, and surgical partnerships to test the system in realistic environments and prepare it for clinical adoption.',
-                },
-              ].map((wp, idx) => (
-                <div key={idx} className="bg-academic-light rounded-lg p-6 border-l-4 border-academic-blue">
-                  <h3 className="text-heading-sm font-bold text-academic-navy mb-2">
-                    {wp.title}
-                  </h3>
-                  <p className="text-academic-gray">{wp.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Research Roadmap */}
-          <div className="mb-16">
-            <h2 className="text-heading-lg font-bold text-academic-navy mb-6">
-              Research Roadmap
-            </h2>
-            <div className="bg-academic-light rounded-lg p-8">
-              <p className="text-academic-gray mb-6">
-                The project is structured around a phased progression from method development to clinical evaluation and translational integration.
-              </p>
-              <div className="space-y-4">
-                {[
-                  {
-                    phase: 'Phase 1: Foundation',
-                    description: 'Establish the research framework, define surgical use cases, and build the initial sensing and feedback pipeline.',
-                  },
-                  {
-                    phase: 'Phase 2: Development',
-                    description: 'Implement multimodal sonification and haptic feedback concepts and test them in controlled simulation and laboratory environments.',
-                  },
-                  {
-                    phase: 'Phase 3: Evaluation',
-                    description: 'Assess perceptual effectiveness, usability, and cognitive impact through human-subject studies and expert review.',
-                  },
-                  {
-                    phase: 'Phase 4: Translation',
-                    description: 'Validate the system in clinically relevant workflows and prepare evidence for future deployment in surgical practice.',
-                  },
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-academic-blue text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">
-                      {idx + 1}
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-academic-navy">{item.phase}</h4>
-                      <p className="text-sm text-academic-gray">{item.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-    </div>
+    </>
   );
 }

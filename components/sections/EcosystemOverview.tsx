@@ -3,15 +3,6 @@
  * Shows interconnection between research areas and institutions
  */
 export default function EcosystemOverview() {
-  const ecosystemElements = [
-    { icon: '🤖', label: 'AI & Imaging' },
-    { icon: '👁️', label: 'Perception' },
-    { icon: '🔊', label: 'Sonification' },
-    { icon: '🎧', label: 'Spatial Audio' },
-    { icon: '📳', label: 'Haptics' },
-    { icon: '🏥', label: 'Clinical' },
-  ];
-
   return (
     <section className="section-container">
       <div className="max-w-6xl mx-auto">

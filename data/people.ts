@@ -56,14 +56,14 @@ export const coordinationTeam: TeamMember[] = [
   {
     id: 'matinfar',
     name: 'Dr. Sasan Matinfar',
-    title: 'Research Scientist & Project Coordinator',
+    title: 'Research Scientist',
     affiliation: 'Technical University of Munich (TUM) & Technical University of Dresden (TU Dresden)',
     group: 'Chair of Computer Aided Medical Procedures (CAMP) / Centre for Tactile Internet (CeTI)',
-    role: '',
+    role: 'Scientific Coordinator',
     website: 'https://www.cs.cit.tum.de/camp/members/sasan-matinfar-1/',
     email: 'sasan.matinfar@tum.de',
     image: 'Sasan.png',
-    bio: 'Dr. Sasan Matinfar is a researcher in surgical sonification, multisensory human-AI interaction, and computer-assisted interventions. His work focuses on transforming complex medical data and tissue interaction signals into meaningful auditory and multisensory feedback that can support surgical perception, decision-making, and guidance in image-guided interventions. His research combines medical imaging, vibroacoustic sensing, computational modeling, spatial audio, and extended reality technologies to develop human-centered surgical systems that bridge AI analysis and human perception. He has contributed to pioneering work in medical sonification, including interactive auditory representations of medical imaging data, tissue-inspired sound models, and immersive auditory environments for surgical training and decision support. Dr. Matinfar is affiliated with the Centre for Tactile Internet with Human-in-the-Loop (CeTI) at TU Dresden and the Chair of Computer Aided Medical Procedures (CAMP) at the Technical University of Munich. Within the Synergia project, he serves as Project Coordinator and leads research on surgical sonification, OR soundscape modeling, vibroacoustic sensing, and immersive spatial audio infrastructures, including the Ambisonics Laboratory.',
+    bio: 'Dr. Sasan Matinfar is a researcher in surgical sonification, multisensory human-AI interaction, and computer-assisted interventions. His work connects medical imaging, vibroacoustic sensing, computational modeling, spatial audio, and extended reality. Within Synergia, he serves as Scientific Coordinator and contributes to research on surgical sonification, OR soundscape modeling, vibroacoustic sensing, and immersive spatial-audio infrastructure.',
   },
 ];
 
@@ -74,7 +74,6 @@ export const researchTeam: TeamMember[] = [
     title: 'Researcher',
     affiliation: 'TUM CAMP',
     role: 'Surgical Sonification & Human-AI Interaction',
-    bio: 'TODO: Add biography',
   },
   {
     id: 'wenhan-sun',
@@ -82,7 +81,6 @@ export const researchTeam: TeamMember[] = [
     title: 'Researcher',
     affiliation: 'TUM CAMP',
     role: 'Medical Imaging & Multimodal Feedback',
-    bio: 'TODO: Add biography',
   },
   {
     id: 'hannes-firzlaff',
@@ -90,49 +88,12 @@ export const researchTeam: TeamMember[] = [
     title: 'Researcher',
     affiliation: 'TU Dresden CeTI',
     role: 'Perception & Auditory Interface Design',
-    bio: 'TODO: Add biography',
   },
 ];
 
-export const clinicalTeam: TeamMember[] = [
-  {
-    id: 'clinical-1',
-    name: 'TODO: Clinical Collaborator Name 1',
-    title: 'Surgeon/Clinician',
-    affiliation: 'TUM Ophthalmology',
-    role: 'Clinical Collaboration & Requirements',
-    bio: 'TODO: Add biography',
-  },
-  {
-    id: 'clinical-2',
-    name: 'TODO: Clinical Collaborator Name 2',
-    title: 'Surgeon/Clinician',
-    affiliation: 'LMU Ophthalmology',
-    role: 'Surgical Requirements & Testing',
-    bio: 'TODO: Add biography',
-  },
-];
+export const clinicalTeam: TeamMember[] = [];
 
-export const externalCollaborators: TeamMember[] = [
-  {
-    id: 'ext-1',
-    name: 'TODO: External Collaborator Name 1',
-    title: 'Researcher',
-    affiliation: 'TODO: Institution',
-    role: 'Auditory Perception Research',
-    website: 'https://TODO.example.com',
-    bio: 'TODO: Add biography',
-  },
-  {
-    id: 'ext-2',
-    name: 'TODO: External Collaborator Name 2',
-    title: 'Researcher',
-    affiliation: 'TODO: Institution',
-    role: 'Human Factors & XR',
-    website: 'https://TODO.example.com',
-    bio: 'TODO: Add biography',
-  },
-];
+export const externalCollaborators: TeamMember[] = [];
 
 export const allTeamMembers = [
   ...principalInvestigators,

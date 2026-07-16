@@ -31,7 +31,7 @@ export default function LatestNews() {
             };
 
             return (
-              <Link key={item.id} href={`/news/${item.id}`}>
+              <Link key={item.id} href="/media#news">
                 <div className="card h-full hover:shadow-xl transition-shadow">
                   {/* Category badge */}
                   <div className="px-6 pt-4">
@@ -83,7 +83,7 @@ export default function LatestNews() {
 
         {/* CTA to news page */}
         <div className="text-center">
-          <Link href="/news" className="btn-secondary">
+          <Link href="/media#news" className="btn-secondary">
             View All News
           </Link>
         </div>

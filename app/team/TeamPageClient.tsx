@@ -8,6 +8,8 @@ import {
   clinicalTeam,
   externalCollaborators,
 } from '@/data/people';
+import { collaborators } from '@/data/collaborators';
+import PlaceholderNotice from '@/components/PlaceholderNotice';
 
 function formatBioPreview(bio: string, maxLength = 220) {
   if (bio.length <= maxLength) {
@@ -290,11 +292,11 @@ export default function TeamPageClient() {
         <div className="max-w-6xl mx-auto mb-20">
           <div className="mb-12">
             <h2 className="text-heading-lg font-bold text-academic-navy mb-2">
-              Project Coordination & Research Leadership
+              Scientific Coordination
             </h2>
             <div className="h-1 w-16 bg-academic-blue rounded-full"></div>
             <p className="text-academic-gray mt-4">
-              Central coordination of research activities and leadership of key research themes
+              Coordination across institutions, research activities, infrastructure, and project communication
             </p>
           </div>
 
@@ -346,6 +348,36 @@ export default function TeamPageClient() {
         </div>
       </section>
 
+      <section id="partners" className="section-container scroll-mt-28">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12">
+            <h2 className="text-heading-lg font-bold text-academic-navy mb-2">
+              Academic, Clinical, and Technical Partners
+            </h2>
+            <div className="h-1 w-16 bg-academic-blue rounded-full"></div>
+            <p className="text-academic-gray mt-4">
+              Institutions contributing scientific, technical, clinical, and funding support
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {collaborators.map((partner) => (
+              <a key={partner.id} href={partner.website} target="_blank" rel="noopener noreferrer" className="card p-6">
+                {partner.logo && <img src={`/logos/${partner.logo}`} alt="" className="mb-4 h-16 w-28 object-contain" />}
+                <h3 className="mb-2 text-heading-sm text-academic-navy">{partner.name}</h3>
+                <p className="text-sm font-semibold text-academic-blue">{partner.primaryRole}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-container bg-academic-light">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="mb-5 text-academic-navy">Alumni</h2>
+          <PlaceholderNotice>An alumni section is reserved for future project members. No alumni records have been supplied.</PlaceholderNotice>
+        </div>
+      </section>
+
       <section className="section-container">
         <div className="max-w-6xl mx-auto mb-20">
           <div className="mb-12">
@@ -370,7 +402,7 @@ export default function TeamPageClient() {
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-heading-md font-bold mb-4">Interested in Joining?</h2>
           <p className="text-lg text-blue-100 mb-8">
-            We're always looking for talented researchers, students, and collaborators to join our
+            We welcome enquiries from researchers, students, and collaborators interested in our
             multidisciplinary team.
           </p>
           <a href="mailto:sasan.matinfar@tum.de" className="btn-primary bg-white text-academic-navy hover:bg-blue-50">

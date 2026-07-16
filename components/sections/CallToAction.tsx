@@ -18,7 +18,7 @@ export default function CallToAction() {
 
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/contact" className="btn-primary bg-white text-academic-navy hover:bg-blue-50">
+          <Link href="/about#contact" className="btn-primary bg-white text-academic-navy hover:bg-blue-50">
             Get in Touch
           </Link>
           <a

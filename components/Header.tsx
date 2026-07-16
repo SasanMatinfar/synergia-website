@@ -1,7 +1,9 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { siteNavigation } from './siteNavigation';
 
 /**
  * Main navigation header component
@@ -9,14 +11,9 @@ import { useState } from 'react';
  */
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/project', label: 'Project' },
-    { href: '/research', label: 'Scientific Work' },
-    { href: '/team', label: 'Team' },
-    { href: '/contact', label: 'About' },
-  ];
+  const pathname = usePathname();
+  const isActive = (href: string) =>
+    href === '/' ? pathname === href : pathname.startsWith(href);
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
@@ -35,11 +32,16 @@ export default function Header() {
 
           {/* Desktop navigation */}
           <div className="hidden lg:flex space-x-1">
-            {navLinks.map((link) => (
+            {siteNavigation.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-3 py-2 text-sm font-medium text-academic-gray hover:text-academic-blue hover:bg-academic-light rounded-md transition-colors"
+                aria-current={isActive(link.href) ? 'page' : undefined}
+                className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                  isActive(link.href)
+                    ? 'bg-academic-light text-academic-navy'
+                    : 'text-academic-gray hover:text-academic-blue hover:bg-academic-light'
+                }`}
               >
                 {link.label}
               </Link>
@@ -51,6 +53,7 @@ export default function Header() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-academic-gray hover:text-academic-blue hover:bg-academic-light focus:outline-none focus:ring-2 focus:ring-academic-blue"
             aria-expanded={isMenuOpen}
+            aria-controls="mobile-navigation"
           >
             <span className="sr-only">Open main menu</span>
             <svg
@@ -71,13 +74,18 @@ export default function Header() {
 
         {/* Mobile menu */}
         {isMenuOpen && (
-          <div className="lg:hidden mt-4 space-y-2">
-            {navLinks.map((link) => (
+          <div id="mobile-navigation" className="lg:hidden mt-4 space-y-2">
+            {siteNavigation.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsMenuOpen(false)}
-                className="block px-3 py-2 text-base font-medium text-academic-gray hover:text-academic-blue hover:bg-academic-light rounded-md transition-colors"
+                aria-current={isActive(link.href) ? 'page' : undefined}
+                className={`block px-3 py-2 text-base font-medium rounded-md transition-colors ${
+                  isActive(link.href)
+                    ? 'bg-academic-light text-academic-navy'
+                    : 'text-academic-gray hover:text-academic-blue hover:bg-academic-light'
+                }`}
               >
                 {link.label}
               </Link>

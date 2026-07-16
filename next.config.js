@@ -15,16 +15,6 @@ const nextConfig = {
   env: {
     NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   },
-
-  // Redirect configuration can be added here if needed
-  async redirects() {
-    return [];
-  },
-
-  // Rewrite configuration for server-side proxies
-  async rewrites() {
-    return [];
-  },
 };
 
 export default nextConfig;
