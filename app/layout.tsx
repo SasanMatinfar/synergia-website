@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { brandingAssets } from '@/components/branding';
 
 export const metadata: Metadata = {
   title: {
@@ -29,9 +30,21 @@ export const metadata: Metadata = {
     locale: 'en_US',
   },
   icons: {
-    icon: '/logos/synergia-icon.png',
-    apple: '/logos/synergia-icon.png',
+    icon: [
+      { url: brandingAssets.icons.favicon16, sizes: '16x16', type: 'image/png' },
+      { url: brandingAssets.icons.favicon32, sizes: '32x32', type: 'image/png' },
+      { url: brandingAssets.icons.favicon48, sizes: '48x48', type: 'image/png' },
+    ],
+    shortcut: brandingAssets.icons.favicon32,
+    apple: [
+      {
+        url: brandingAssets.icons.appleTouch,
+        sizes: '180x180',
+        type: 'image/png',
+      },
+    ],
   },
+  manifest: '/manifest.webmanifest',
 };
 
 export default function RootLayout({

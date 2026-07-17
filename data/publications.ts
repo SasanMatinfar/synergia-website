@@ -1,7 +1,4 @@
-/**
- * Publications data structure
- * TODO: Replace with real publications, DOIs, and links
- */
+/** Publications and preprints verified against their linked records. */
 
 export interface Publication {
   id: string;
@@ -19,72 +16,28 @@ export interface Publication {
 
 export const publications: Publication[] = [
   {
-    id: 'pub-2024-sonification',
-    title: 'TODO: Surgical Sonification in High-Intensity Environments: Design Principles and Human Perception',
+    id: 'reyes-vargas-2026-ioct-sonification',
+    title: 'Physics-Based iOCT Sonification for Real-time Interaction Awareness in Subretinal Injection',
     authors: [
-      'TODO: Sasan Matinfar',
-      'TODO: Co-author 1',
-      'TODO: Co-author 2',
-      'TODO: Co-author 3',
+      'Luis D. Reyes Vargas',
+      'Veronica Ruozzi',
+      'Andrea K. M. Ross',
+      'Shervin Dehghani',
+      'Michael Sommersperger',
+      'Koorosh Faridpooya',
+      'Mohammad Ali Nasseri',
+      'Merle Fairhurst',
+      'Nassir Navab',
+      'Sasan Matinfar',
     ],
-    venue: 'TODO: Conference/Journal Name',
-    year: 2024,
-    doi: 'TODO: 10.xxxx/xxxxx',
-    pdfUrl: 'TODO: link-to-pdf',
-    projectTags: ['WP2', 'WP4'],
-    topicTags: ['sonification', 'surgical-feedback', 'multisensory'],
+    venue: 'arXiv preprint arXiv:2605.14500',
+    year: 2026,
+    doi: '10.48550/arXiv.2605.14500',
+    pdfUrl: 'https://arxiv.org/pdf/2605.14500',
+    topicTags: ['Sonification', 'Human–Computer Interaction', 'Image and Video Processing'],
     abstract:
-      'TODO: Add abstract describing surgical sonification research from Synergia project.',
-    keywords: ['sonification', 'surgery', 'human perception', 'auditory display'],
-  },
-  {
-    id: 'pub-2024-ai-surgery',
-    title: 'TODO: Deep Learning for Real-Time Surgical Scene Understanding in Ophthalmic Surgery',
-    authors: [
-      'TODO: Author 1',
-      'TODO: Author 2',
-      'TODO: Nassir Navab',
-      'TODO: Author 4',
-    ],
-    venue: 'TODO: Conference/Journal Name',
-    year: 2024,
-    doi: 'TODO: 10.xxxx/xxxxx',
-    projectTags: ['WP1', 'WP2'],
-    topicTags: ['AI', 'surgical-imaging', 'deep-learning'],
-    abstract: 'TODO: Add abstract describing AI research for surgical scene analysis.',
-  },
-  {
-    id: 'pub-2024-multisensory',
-    title: 'TODO: Multisensory Integration in Surgical Guidance: A Systematic Review',
-    authors: ['TODO: Author 1', 'TODO: Merle Fairhurst', 'TODO: Author 3'],
-    venue: 'TODO: Medical Journal',
-    year: 2024,
-    doi: 'TODO: 10.xxxx/xxxxx',
-    projectTags: ['WP2', 'WP3'],
-    topicTags: ['multisensory', 'surgical-guidance'],
-    abstract: 'TODO: Add abstract about multisensory feedback in surgery.',
-  },
-  {
-    id: 'pub-2023-ambisonics',
-    title: 'TODO: Immersive Spatial Audio for Surgical Training: Design and Evaluation',
-    authors: ['TODO: Sasan Matinfar', 'TODO: Co-author 1', 'TODO: Co-author 2'],
-    venue: 'TODO: Conference Name',
-    year: 2023,
-    doi: 'TODO: 10.xxxx/xxxxx',
-    projectTags: ['WP4'],
-    topicTags: ['spatial-audio', 'ambisonics', 'training'],
-    abstract: 'TODO: Add abstract about Ambisonics lab and surgical training research.',
-  },
-  {
-    id: 'pub-2023-perception',
-    title: 'TODO: Surgeon Workload and Information Processing in High-Intensity Environments',
-    authors: ['TODO: Author 1', 'TODO: Author 2'],
-    venue: 'TODO: Workshop Name',
-    year: 2023,
-    doi: 'TODO: 10.xxxx/xxxxx',
-    projectTags: ['WP2', 'WP3'],
-    topicTags: ['human-perception', 'cognitive-workload'],
-    abstract: 'TODO: Add abstract about human factors in surgery.',
+      'This preprint presents a real-time, physics-inspired sonification framework that maps segmented intraoperative OCT anatomy, needle motion, and retinal deformation to auditory feedback for subretinal injection guidance. A controlled study with 34 participants and an evaluation by four experts examined event identification and clinical relevance.',
+    keywords: ['iOCT', 'sonification', 'subretinal injection', 'surgical guidance', 'auditory feedback'],
   },
 ];
 

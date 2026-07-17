@@ -74,6 +74,7 @@ export const researchTeam: TeamMember[] = [
     title: 'Researcher',
     affiliation: 'TUM CAMP',
     role: 'Surgical Sonification & Human-AI Interaction',
+    image: 'veronica.jpeg',
   },
   {
     id: 'wenhan-sun',
@@ -81,6 +82,7 @@ export const researchTeam: TeamMember[] = [
     title: 'Researcher',
     affiliation: 'TUM CAMP',
     role: 'Medical Imaging & Multimodal Feedback',
+    image: 'wenhan.jpeg',
   },
   {
     id: 'hannes-firzlaff',
@@ -88,6 +90,7 @@ export const researchTeam: TeamMember[] = [
     title: 'Researcher',
     affiliation: 'TU Dresden CeTI',
     role: 'Perception & Auditory Interface Design',
+    image: 'hannes.jpeg',
   },
 ];
 

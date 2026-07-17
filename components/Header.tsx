@@ -1,8 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { brandingAssets } from './branding';
 import { siteNavigation } from './siteNavigation';
 
 /**
@@ -20,13 +22,18 @@ export default function Header() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex justify-between items-center">
           {/* Logo and site title */}
-          <Link href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity">
-            <div className="w-12 h-12 rounded-lg overflow-hidden bg-transparent">
-              <img src="/logos/synergia-logo.png" alt="Synergia" className="w-full h-full object-cover" />
-            </div>
-            <div className="hidden sm:block">
+          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <Image
+              src={brandingAssets.mark.src}
+              width={brandingAssets.mark.width}
+              height={brandingAssets.mark.height}
+              alt="Synergia project logo"
+              priority
+              className="h-9 w-auto object-contain sm:h-11"
+            />
+            <div>
               <h1 className="text-lg font-bold text-academic-navy">Synergia</h1>
-              <p className="text-xs text-academic-gray">DFG Research Project</p>
+              <p className="hidden text-xs text-academic-gray sm:block">DFG Research Project</p>
             </div>
           </Link>
 

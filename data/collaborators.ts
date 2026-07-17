@@ -33,7 +33,7 @@ export const collaborators: Collaborator[] = [
     abbreviation: 'TUM Ophthalmology',
     type: 'hospital',
     website: 'https://www.med.tum.de/en/eye-clinic',
-    logo: 'optimized/tum-clinic-logo.svg.png',
+    logo: 'tum-clinic-logo.jpg',
     description:
       'TODO: Add TUM Ophthalmology description. Clinical partner providing surgical expertise and testing environments.',
     primaryRole: 'Clinical requirements, surgical testing, ophthalmic expertise',
@@ -80,7 +80,7 @@ export const collaborators: Collaborator[] = [
     abbreviation: 'LMU Ophthalmology',
     type: 'hospital',
     website: 'https://www.med.uni-muenchen.de/en/index.html',
-    logo: 'optimized/lmu-logo.svg.png',
+    logo: 'lmu_logo.jpg',
     description:
       'TODO: Add LMU Ophthalmology description. Clinical collaborator for surgical testing and validation.',
     primaryRole: 'Clinical validation, ophthalmic surgical testing',
