@@ -13,6 +13,7 @@ export interface TeamMember {
   website?: string;
   email?: string;
   image?: string; // Path to image in public/images/people/
+  initials?: string; // Optional override for the generated avatar
   bio?: string;
 }
 
@@ -94,7 +95,73 @@ export const researchTeam: TeamMember[] = [
   },
 ];
 
-export const clinicalTeam: TeamMember[] = [];
+export const clinicalTeam: TeamMember[] = [
+  {
+    id: 'peter-charbel-issa',
+    name: 'Univ.-Prof. Dr. Dr. med. Peter Charbel Issa',
+    title: 'Director, Department of Ophthalmology',
+    affiliation: 'TUM University Hospital',
+    role: 'Clinical Collaborator',
+    website: 'https://augenklinik.mri.tum.de/de/team/peter_charbel-issa-0',
+    image: 'isa.jpg',
+  },
+  {
+    id: 'carmen-baumann',
+    name: 'PD Dr. med. Carmen Baumann',
+    title: 'Senior Physician (Oberärztin)',
+    affiliation: 'Department of Ophthalmology, TUM University Hospital',
+    role: 'Clinical Collaborator',
+    website: 'https://augenklinik.mri.tum.de/de/team/carmen_baumann',
+    image: 'carmen-faceless-avatar-muted.png',
+    initials: 'CB',
+  },
+  {
+    id: 'mathias-maier',
+    name: 'Prof. Dr. med. Mathias Maier',
+    title: 'Senior Consultant and Deputy Director',
+    affiliation: 'Department of Ophthalmology, TUM University Hospital',
+    role: 'Clinical Collaborator',
+    website: 'https://augenklinik.mri.tum.de/de/team/mathias_maier-0',
+    image: 'maier.jpg',
+  },
+  {
+    id: 'daniel-zapp',
+    name: 'Dr. med. Daniel Zapp',
+    title: 'Senior Physician, Glaucoma, Cornea, and Refractive Surgery',
+    affiliation: 'Department of Ophthalmology, TUM University Hospital',
+    role: 'Clinical Collaborator',
+    website: 'https://augenklinik.mri.tum.de/de/team/daniel_zapp',
+    image: 'daniel_zapp.jpg',
+  },
+  {
+    id: 'andrea-ross',
+    name: 'Dr. med. Andrea Ross',
+    title: 'Physician and Postdoctoral Researcher',
+    affiliation: 'Department of Ophthalmology and MAPS, TUM University Hospital',
+    role: 'Clinical Collaborator',
+    website: 'https://augenklinik.mri.tum.de/de/team/andrea_ross',
+    image: 'andi.jpg',
+  },
+];
+
+export const formerTeamMembers: TeamMember[] = [
+  {
+    id: 'luis-david-reyes-vargas',
+    name: 'Luis David Reyes Vargas',
+    title: 'Former Team Member',
+    affiliation: '',
+    role: 'Former Team Member',
+    image: 'luis.jpeg',
+  },
+  {
+    id: 'laura-schuetz',
+    name: 'Laura Schütz',
+    title: 'Former Team Member',
+    affiliation: '',
+    role: 'Former Team Member',
+    image: 'laura.jpeg',
+  },
+];
 
 export const externalCollaborators: TeamMember[] = [];
 

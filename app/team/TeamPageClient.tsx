@@ -6,10 +6,10 @@ import {
   coordinationTeam,
   researchTeam,
   clinicalTeam,
+  formerTeamMembers,
   externalCollaborators,
 } from '@/data/people';
 import { collaborators } from '@/data/collaborators';
-import PlaceholderNotice from '@/components/PlaceholderNotice';
 
 function formatBioPreview(bio: string, maxLength = 220) {
   if (bio.length <= maxLength) {
@@ -42,7 +42,7 @@ function TeamMemberCard({ member, showRole = true }: { member: (typeof principal
         </div>
       ) : (
         <div className="w-24 h-24 bg-gradient-to-br from-academic-blue to-academic-navy rounded-full mx-auto mb-4 flex items-center justify-center text-white text-3xl font-bold">
-          {member.name
+          {member.initials ?? member.name
             .split(' ')
             .map((n) => n[0])
             .join('')}
@@ -300,7 +300,7 @@ export default function TeamPageClient() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {coordinationTeam.map((member) => (
               <TeamMemberCard key={member.id} member={member} />
             ))}
@@ -373,8 +373,15 @@ export default function TeamPageClient() {
 
       <section className="section-container bg-academic-light">
         <div className="max-w-6xl mx-auto">
-          <h2 className="mb-5 text-academic-navy">Alumni</h2>
-          <PlaceholderNotice>An alumni section is reserved for future project members. No alumni records have been supplied.</PlaceholderNotice>
+          <div className="mb-12">
+            <h2 className="mb-2 text-heading-lg font-bold text-academic-navy">Former Team Members</h2>
+            <div className="h-1 w-16 rounded-full bg-slate-400"></div>
+          </div>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {formerTeamMembers.map((member) => (
+              <TeamMemberCard key={member.id} member={member} showRole={false} />
+            ))}
+          </div>
         </div>
       </section>
 
