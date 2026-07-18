@@ -14,15 +14,27 @@ import { siteNavigation } from './siteNavigation';
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+  const normalizedPathname = pathname.replace(/\/+$/, '') || '/';
+  const legacyRouteParents: Record<string, string> = {
+    '/scientific-work': '/research',
+    '/publications': '/research',
+    '/infrastructure': '/research-infrastructure',
+    '/ambisonics-lab': '/research-infrastructure',
+    '/collaborators': '/team',
+    '/news': '/media',
+    '/contact': '/about',
+    '/contact/faq': '/about',
+  };
+  const activePath = legacyRouteParents[normalizedPathname] ?? normalizedPathname;
   const isActive = (href: string) =>
-    href === '/' ? pathname === href : pathname.startsWith(href);
+    href === '/' ? activePath === href : activePath === href || activePath.startsWith(`${href}/`);
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex justify-between items-center">
           {/* Logo and site title */}
-          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+          <Link href="/" className="flex items-center gap-3 transition-opacity hover:opacity-80 focus-visible:rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-academic-blue focus-visible:ring-offset-2">
             <Image
               src={brandingAssets.mark.src}
               width={brandingAssets.mark.width}
@@ -44,10 +56,10 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 aria-current={isActive(link.href) ? 'page' : undefined}
-                className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                className={`relative rounded-md px-3 py-2 text-sm transition-colors after:absolute after:bottom-0 after:left-3 after:right-3 after:h-0.5 after:origin-center after:rounded-full after:bg-academic-blue after:transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-academic-blue focus-visible:ring-offset-2 ${
                   isActive(link.href)
-                    ? 'bg-academic-light text-academic-navy'
-                    : 'text-academic-gray hover:text-academic-blue hover:bg-academic-light'
+                    ? 'font-bold text-academic-navy after:scale-x-100'
+                    : 'font-medium text-academic-gray after:scale-x-0 hover:bg-academic-light hover:text-academic-blue'
                 }`}
               >
                 {link.label}
@@ -88,10 +100,10 @@ export default function Header() {
                 href={link.href}
                 onClick={() => setIsMenuOpen(false)}
                 aria-current={isActive(link.href) ? 'page' : undefined}
-                className={`block px-3 py-2 text-base font-medium rounded-md transition-colors ${
+                className={`relative block rounded-md px-3 py-2 text-base transition-colors after:absolute after:bottom-0 after:left-3 after:h-0.5 after:w-10 after:origin-left after:rounded-full after:bg-academic-blue after:transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-academic-blue focus-visible:ring-offset-2 ${
                   isActive(link.href)
-                    ? 'bg-academic-light text-academic-navy'
-                    : 'text-academic-gray hover:text-academic-blue hover:bg-academic-light'
+                    ? 'bg-academic-light font-bold text-academic-navy after:scale-x-100'
+                    : 'font-medium text-academic-gray after:scale-x-0 hover:bg-academic-light hover:text-academic-blue'
                 }`}
               >
                 {link.label}

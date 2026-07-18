@@ -64,13 +64,6 @@ export default function Footer() {
                 <br />
                 TU Dresden
               </p>
-              <p className="mt-4">
-                <strong>Participating Units:</strong>
-                <br />
-                Chair for Computer Aided Medical Procedures
-                <br />
-                Junior Professorship in Social Affective Touch and CeTI
-              </p>
             </div>
           </div>
         </div>

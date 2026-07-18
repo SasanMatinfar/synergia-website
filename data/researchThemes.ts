@@ -1,105 +1,96 @@
-/**
- * Research themes and areas
- * These are the core research directions of the Synergia project
- */
-
 export interface ResearchTheme {
   id: string;
   title: string;
-  subtitle: string;
   description: string;
-  color: 'blue' | 'purple' | 'green' | 'red' | 'yellow' | 'indigo' | 'pink' | 'cyan';
-  icon: string; // emoji or icon identifier
+  kind: 'research-theme' | 'enabling-technology';
   relatedWorkPackages?: string[];
 }
 
 export const researchThemes: ResearchTheme[] = [
   {
     id: 'ai-surgery',
-    title: 'AI-Assisted Surgery',
-    subtitle: 'Real-time surgical analysis and guidance',
+    title: 'AI-Assisted Surgical Guidance',
     description:
-      'Developing AI-assisted methods for real-time surgical scene analysis, instrument tracking, and anatomical awareness in ophthalmic and microsurgical workflows. The aim is to provide timely guidance without adding visual overload to the surgeon.',
-    color: 'blue',
-    icon: '🤖',
-    relatedWorkPackages: ['WP1', 'WP2'],
+      'Investigating how computational analysis, tracking, and anatomical awareness can support surgical guidance while respecting clinicians’ limited visual attention.',
+    kind: 'research-theme',
+    relatedWorkPackages: ['WP1', 'WP6'],
+  },
+  {
+    id: 'surgical-sonification',
+    title: 'Computational Sonification',
+    description:
+      'Studying how surgical and model-derived information can be translated into structured auditory signals that complement conventional visual displays.',
+    kind: 'research-theme',
+    relatedWorkPackages: ['WP2', 'WP3'],
+  },
+  {
+    id: 'soundscape-modeling',
+    title: 'Operating Room Soundscapes',
+    description:
+      'Modeling realistic spatial operating-room sound environments to examine auditory scenes, information demands, and interference under ecologically meaningful conditions.',
+    kind: 'research-theme',
+    relatedWorkPackages: ['WP2'],
   },
   {
     id: 'multisensory-perception',
     title: 'Human Multisensory Perception',
-    subtitle: 'Understanding perception in complex environments',
     description:
-      'Investigating how surgeons integrate visual, auditory, and tactile information during high-intensity procedures. The work examines perceptual thresholds, attentional demands, and cognitive workload to inform the design of effective multimodal feedback.',
-    color: 'purple',
-    icon: '👁️',
-    relatedWorkPackages: ['WP2', 'WP3'],
+      'Examining how visual and auditory information influence detection, discrimination, navigation, cognitive load, and fatigue in controlled and active tasks.',
+    kind: 'research-theme',
+    relatedWorkPackages: ['WP4', 'WP5'],
   },
   {
-    id: 'surgical-sonification',
-    title: 'Surgical Sonification',
-    subtitle: 'Auditory representation of surgical data',
+    id: 'expertise-training',
+    title: 'Expertise and Training',
     description:
-      'Converting surgical and AI-derived information into meaningful auditory signals that support perception and decision-making during intervention. Sonification is designed to communicate state and proximity in a way that fits naturally into surgical workflow.',
-    color: 'green',
-    icon: '🔊',
-    relatedWorkPackages: ['WP1', 'WP2', 'WP4'],
-  },
-  {
-    id: 'vibroacoustic-sensing',
-    title: 'Vibroacoustic Sensing',
-    subtitle: 'Tactile feedback and sensory integration',
-    description:
-      'Designing vibroacoustic and tactile feedback mechanisms that communicate surgical information through non-visual channels. These systems aim to support awareness of instrument state, proximity, and alerts without increasing visual or auditory burden.',
-    color: 'red',
-    icon: '📳',
-    relatedWorkPackages: ['WP3', 'WP4'],
-  },
-  {
-    id: 'soundscape-modeling',
-    title: 'OR Soundscape Modeling',
-    subtitle: 'Acoustic environment design for surgery',
-    description:
-      'Modeling and optimizing the acoustic environment of operating rooms to improve information transfer and reduce interference. The work considers alarms, speech, and background noise as part of a broader surgical soundscape design problem.',
-    color: 'yellow',
-    icon: '🎛️',
-    relatedWorkPackages: ['WP2', 'WP4'],
-  },
-  {
-    id: 'spatial-audio-xr',
-    title: 'Spatial Audio & XR',
-    subtitle: 'Immersive 3D audio and extended reality',
-    description:
-      'Implementing immersive spatial audio and extended-reality environments for surgical visualization, training, and evaluation. The Ambisonics laboratory enables realistic OR soundscape simulation and the study of spatially structured feedback.',
-    color: 'indigo',
-    icon: '🎧',
-    relatedWorkPackages: ['WP1', 'WP3', 'WP4'],
-  },
-  {
-    id: 'human-ai-collaboration',
-    title: 'Human-AI Collaboration',
-    subtitle: 'Designing effective surgeon-AI interaction',
-    description:
-      'Exploring how AI systems and surgeons can collaborate effectively during intervention. The research focuses on interaction paradigms that preserve surgeon control while delivering timely, context-aware support.',
-    color: 'pink',
-    icon: '🤝',
-    relatedWorkPackages: ['WP1', 'WP2', 'WP3'],
+      'Investigating how experience, learning, and training shape the use of multisensory guidance and performance in demanding surgical tasks.',
+    kind: 'research-theme',
+    relatedWorkPackages: ['WP5'],
   },
   {
     id: 'clinical-translation',
     title: 'Clinical Translation',
-    subtitle: 'From research to OR deployment',
     description:
-      'Conducting clinical studies and validation experiments to ensure the research translates into real surgical practice. The work is guided by close collaboration with ophthalmologists and surgeons to evaluate relevance, usability, and feasibility.',
-    color: 'cyan',
-    icon: '🏥',
-    relatedWorkPackages: ['WP2', 'WP3', 'WP4'],
+      'Evaluating optimized multisensory guidance in realistic ophthalmic experiments, with attention to clinical usability, performance, and translational potential.',
+    kind: 'research-theme',
+    relatedWorkPackages: ['WP6'],
+  },
+  {
+    id: 'vibroacoustic-sensing',
+    title: 'Vibroacoustic Interaction & Sensing',
+    description:
+      'Capturing and interpreting vibroacoustic signals generated during surgical interaction as a basis for experimental sensing and feedback methods.',
+    kind: 'enabling-technology',
+  },
+  {
+    id: 'medical-xr',
+    title: 'Medical XR',
+    description:
+      'Creating controlled immersive environments for surgical simulation, interaction studies, and repeatable experimental evaluation.',
+    kind: 'enabling-technology',
+  },
+  {
+    id: 'artificial-intelligence',
+    title: 'Artificial Intelligence',
+    description:
+      'Supporting analysis and context-aware guidance within experimental computer-assisted surgical workflows.',
+    kind: 'enabling-technology',
+  },
+  {
+    id: 'spatial-audio-xr',
+    title: 'Spatial Audio',
+    description:
+      'Reproducing and designing spatially structured sound for operating-room simulation and perceptual experiments.',
+    kind: 'enabling-technology',
+  },
+  {
+    id: 'physics-based-modeling',
+    title: 'Physics-based Modeling',
+    description:
+      'Connecting computational models of surgical interaction with interpretable auditory representations and experimental simulations.',
+    kind: 'enabling-technology',
   },
 ];
 
-export const getThemeById = (id: string): ResearchTheme | undefined => {
-  return researchThemes.find((theme) => theme.id === id);
-};
-
-export const getThemesByColor = (color: string): ResearchTheme[] => {
-  return researchThemes.filter((theme) => theme.color === color);
-};
+export const getThemeById = (id: string): ResearchTheme | undefined =>
+  researchThemes.find((theme) => theme.id === id);

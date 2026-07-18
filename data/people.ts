@@ -1,15 +1,12 @@
-/**
- * Team and collaborator data
- * TODO: Replace with real names, titles, affiliations, and information
- */
+/** Verified team and collaborator data. */
 
 export interface TeamMember {
   id: string;
   name: string;
-  title: string;
-  affiliation: string;
+  title?: string;
+  affiliation?: string;
   group?: string;
-  role: string; // E.g., "Principal Investigator", "Postdoc", "PhD Student"
+  role?: string;
   website?: string;
   email?: string;
   image?: string; // Path to image in public/images/people/
@@ -22,7 +19,7 @@ export const principalInvestigators: TeamMember[] = [
     id: 'fairhurst',
     name: 'Prof. Dr. Merle Fairhurst',
     title: 'Professor of Human Multisensory Perception and Neurocognitive Psychology',
-    affiliation: 'Technical University of Dresden',
+    affiliation: 'CeTI, TU Dresden',
     group: 'Centre for Tactile Internet with Human-in-the-Loop (CeTI)',
     role: 'Principal Investigator',
     website: 'https://tu-dresden.de/ing/elektrotechnik/ias/socialtouch',
@@ -58,7 +55,7 @@ export const coordinationTeam: TeamMember[] = [
     id: 'matinfar',
     name: 'Dr. Sasan Matinfar',
     title: 'Research Scientist',
-    affiliation: 'Technical University of Munich (TUM) & Technical University of Dresden (TU Dresden)',
+    affiliation: 'CAMP, Technical University of Munich / CeTI, TU Dresden',
     group: 'Chair of Computer Aided Medical Procedures (CAMP) / Centre for Tactile Internet (CeTI)',
     role: 'Scientific Coordinator',
     website: 'https://www.cs.cit.tum.de/camp/members/sasan-matinfar-1/',
@@ -73,7 +70,7 @@ export const researchTeam: TeamMember[] = [
     id: 'veronica-zuozzi',
     name: 'Dr. Veronica Zuozzi',
     title: 'Researcher',
-    affiliation: 'TUM CAMP',
+    affiliation: 'CAMP, Technical University of Munich',
     role: 'Surgical Sonification & Human-AI Interaction',
     image: 'veronica.jpeg',
   },
@@ -81,7 +78,7 @@ export const researchTeam: TeamMember[] = [
     id: 'wenhan-sun',
     name: 'Wenhan Sun',
     title: 'Researcher',
-    affiliation: 'TUM CAMP',
+    affiliation: 'CAMP, Technical University of Munich',
     role: 'Medical Imaging & Multimodal Feedback',
     image: 'wenhan.jpeg',
   },
@@ -89,7 +86,7 @@ export const researchTeam: TeamMember[] = [
     id: 'hannes-firzlaff',
     name: 'Hannes Firzlaff',
     title: 'Researcher',
-    affiliation: 'TU Dresden CeTI',
+    affiliation: 'CeTI, TU Dresden',
     role: 'Perception & Auditory Interface Design',
     image: 'hannes.jpeg',
   },
@@ -100,7 +97,7 @@ export const clinicalTeam: TeamMember[] = [
     id: 'peter-charbel-issa',
     name: 'Univ.-Prof. Dr. Dr. med. Peter Charbel Issa',
     title: 'Director, Department of Ophthalmology',
-    affiliation: 'TUM University Hospital',
+    affiliation: 'Department of Ophthalmology, TUM University Hospital',
     role: 'Clinical Collaborator',
     website: 'https://augenklinik.mri.tum.de/de/team/peter_charbel-issa-0',
     image: 'isa.jpg',
@@ -148,17 +145,11 @@ export const formerTeamMembers: TeamMember[] = [
   {
     id: 'luis-david-reyes-vargas',
     name: 'Luis David Reyes Vargas',
-    title: 'Former Team Member',
-    affiliation: '',
-    role: 'Former Team Member',
     image: 'luis.jpeg',
   },
   {
     id: 'laura-schuetz',
     name: 'Laura Schütz',
-    title: 'Former Team Member',
-    affiliation: '',
-    role: 'Former Team Member',
     image: 'laura.jpeg',
   },
 ];

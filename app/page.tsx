@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { collaborators } from '@/data/collaborators';
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -9,36 +10,17 @@ export const metadata: Metadata = {
 };
 
 const researchAreas = [
-  ['Multisensory Integration', 'How visual, auditory, and tactile information is combined in demanding environments.', '/research#multisensory-perception'],
+  ['Multisensory Integration', 'How visual and auditory information is combined in demanding environments.', '/research#multisensory-perception'],
   ['Surgical Sonification', 'Auditory representations of surgical and computational information.', '/research#surgical-sonification'],
   ['Spatial Audio and Ambisonics', 'Immersive sound environments for controlled experiments and interaction studies.', '/research#spatial-audio-xr'],
   ['AI and Computational Modeling', 'Context-aware analysis and modeling for computer-assisted interventions.', '/research#ai-surgery'],
   ['Human Perception and Clinical Interaction', 'Human-centred evaluation of feedback, workload, attention, and clinical use.', '/research#clinical-translation'],
 ] as const;
 
-const collaboratingPartners = [
-  {
-    name: 'LMU University Hospital — Department of Ophthalmology',
-    website: 'https://www.lmu-klinikum.de/augenklinik',
-    description:
-      'Clinical collaboration supporting ophthalmic research, surgeon interviews, and future experimental validation.',
-    logo: '/logos/lmu_logo.jpg',
-  },
-  {
-    name: 'SynthesEyes GmbH',
-    website: 'https://syntheseyes.com/',
-    description:
-      'Industry collaboration supporting the translation of multisensory interaction technologies into future medical applications.',
-    logo: '/logos/syntheseyes.png',
-  },
-  {
-    name: 'SURAG Medical',
-    website: 'https://www.surag-medical.com/',
-    description:
-      'Technology collaboration supporting vibroacoustic sensing and experimental surgical interaction research.',
-    logo: '/logos/surag.png',
-  },
-] as const;
+const consortiumPreview = ['tum', 'tu-dresden', 'tum-ophthalmology'].map((id) =>
+  collaborators.find((partner) => partner.id === id)!,
+);
+const partnerPreview = collaborators.filter((partner) => ['lmu-ophthalmology', 'syntheseyes', 'surag-medical'].includes(partner.id));
 
 export default function HomePage() {
   return (
@@ -108,113 +90,53 @@ export default function HomePage() {
       <section className="bg-academic-light">
         <div className="section-container">
           <h2 className="mb-4 text-academic-navy">Consortium</h2>
-          <p className="mb-10 max-w-3xl text-lg text-academic-gray">
-            The project combines technical, perceptual, and clinical expertise across its two university partners.
+          <p className="mb-8 max-w-3xl text-lg text-academic-gray">
+            Synergia brings together technical, perceptual, and clinical expertise from the Technical University of Munich and TU Dresden.
           </p>
-          <div className="grid gap-8 lg:grid-cols-2">
-            <article className="rounded-xl border border-slate-200 bg-white p-7">
-              <div className="mb-7 flex min-h-20 items-center gap-5 border-b border-slate-200 pb-6">
-                <img src="/logos/optimized/tum-logo.png" alt="" className="h-20 w-28 flex-shrink-0 object-contain sm:h-24 sm:w-32" />
-                <div>
-                  <h3 className="text-heading-sm text-academic-navy">Technical University of Munich</h3>
+          <div className="mb-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {consortiumPreview.map((partner) => (
+              <a
+                key={partner.id}
+                href={partner.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex min-h-72 flex-col items-center justify-center rounded-xl border border-slate-200 bg-white p-8 text-center shadow-sm transition hover:border-academic-blue hover:shadow-md"
+              >
+                <div className="mb-7 flex h-28 w-full items-center justify-center">
+                  <Image
+                    src={`/logos/${partner.logo}`}
+                    alt={`${partner.name} logo`}
+                    width={240}
+                    height={112}
+                    className="h-24 w-full object-contain"
+                  />
                 </div>
-              </div>
-              <div className="space-y-5">
-                <div className="grid grid-cols-[7rem_1fr] items-center gap-4 sm:grid-cols-[11rem_1fr]">
-                  <img src="/logos/optimized/camp-logo.png" alt="" className="h-24 w-full scale-110 object-contain sm:h-28" />
-                  <div>
-                    <h4 className="text-base text-academic-navy">Chair for Computer Aided Medical Procedures</h4>
-                    <p className="mt-1 text-sm text-academic-gray">Computer-assisted intervention, medical AI, imaging, and multimodal systems.</p>
-                  </div>
-                </div>
-                <div className="grid grid-cols-[7rem_1fr] items-center gap-4 sm:grid-cols-[11rem_1fr]">
-                  <img src="/logos/tum-clinic-logo.jpg" alt="" className="h-24 w-full object-contain sm:h-28" />
-                  <div>
-                    <h4 className="text-base text-academic-navy">Department of Ophthalmology</h4>
-                    <p className="mt-1 text-sm text-academic-gray">Clinical expertise and ophthalmic research contexts documented by the project.</p>
-                  </div>
-                </div>
-                <div className="grid grid-cols-[7rem_1fr] items-center gap-4 sm:grid-cols-[11rem_1fr]">
-                  <img src="/logos/optimized/maps-logo.png" alt="" className="h-20 w-full object-contain" />
-                  <div>
-                    <h4 className="text-base text-academic-navy">Medical Autonomy and Precision Surgery (MAPS)</h4>
-                    <p className="mt-1 text-sm text-academic-gray">Surgical robotics, precision intervention, medical imaging, and clinical translation.</p>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article className="rounded-xl border border-slate-200 bg-white p-7">
-              <div className="mb-7 flex min-h-20 items-center gap-5 border-b border-slate-200 pb-6">
-                <img src="/logos/optimized/tu-dresden-logo.png" alt="" className="h-20 w-32 flex-shrink-0 object-contain sm:h-24 sm:w-36" />
-                <div>
-                  <h3 className="text-heading-sm text-academic-navy">TU Dresden</h3>
-                </div>
-              </div>
-              <div className="space-y-5">
-                <div className="grid grid-cols-[7rem_1fr] items-center gap-4 sm:grid-cols-[11rem_1fr]">
-                  <img src="/logos/social.png" alt="" className="h-20 w-full object-contain" />
-                  <div>
-                    <h4 className="text-base text-academic-navy">Junior Professorship in Social Affective Touch</h4>
-                    <p className="mt-1 text-sm text-academic-gray">Multisensory perception, cognition, and human-centred interaction research.</p>
-                  </div>
-                </div>
-                <div className="grid grid-cols-[7rem_1fr] items-center gap-4 sm:grid-cols-[11rem_1fr]">
-                  <img src="/logos/optimized/ceti-logo.png" alt="" className="h-20 w-full object-contain" />
-                  <div>
-                    <h4 className="text-base text-academic-navy">Centre for Tactile Internet with Human-in-the-Loop (CeTI)</h4>
-                    <p className="mt-1 text-sm text-academic-gray">Interdisciplinary environment for human-centred tactile and multisensory research.</p>
-                  </div>
-                </div>
-              </div>
-            </article>
+                <h3 className="mb-2 text-heading-sm text-academic-navy">{partner.name}</h3>
+                <p className="text-sm font-medium text-academic-blue">{partner.primaryRole}</p>
+              </a>
+            ))}
           </div>
+          <Link href="/team#partners" className="font-semibold text-academic-blue">Meet the team and partners →</Link>
         </div>
       </section>
 
       <section className="section-container">
         <h2 className="mb-4 text-academic-navy">Collaborating Partners</h2>
-        <p className="mb-10 max-w-3xl text-lg text-academic-gray">
-          Organizations collaborating with Synergia through clinical, industry, and technology
-          partnerships outside the funded consortium.
-        </p>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {collaboratingPartners.map((partner) => (
-            <article key={partner.name} className="flex h-full flex-col rounded-xl border border-slate-200 bg-white p-7 shadow-sm">
-              <div className="mb-6 flex h-28 items-center justify-center p-2">
-                <img
-                  src={partner.logo}
-                  alt={`${partner.name} logo`}
-                  className="h-full w-full object-contain"
-                />
-              </div>
-              <div className="flex flex-1 flex-col">
-                <h3 className="text-heading-sm text-academic-navy">
-                  <a
-                    href={partner.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-academic-blue"
-                  >
-                    {partner.name}
-                  </a>
-                </h3>
-                <p className="mt-4 flex-1 text-sm leading-relaxed text-academic-gray">
-                  {partner.description}
-                </p>
-              </div>
-            </article>
+        <div className="mb-7 grid grid-cols-2 gap-3 sm:grid-cols-3">
+          {partnerPreview.map((partner) => (
+            <a key={partner.id} href={partner.website} target="_blank" rel="noopener noreferrer" className="flex min-h-28 flex-col items-center justify-center rounded-lg border border-slate-200 bg-white p-3 text-center hover:border-academic-blue" aria-label={`Visit ${partner.name} website`}>
+              <Image src={`/logos/${partner.logo}`} alt={`${partner.name} logo`} width={160} height={56} className="mb-2 h-12 w-full object-contain" />
+              <span className="text-xs font-semibold leading-snug text-academic-navy">{partner.name}</span>
+            </a>
           ))}
         </div>
+        <Link href="/team#partners" className="font-semibold text-academic-blue">View all consortium institutions and partners →</Link>
       </section>
 
       <section className="section-container">
         <article className="grid overflow-hidden rounded-xl border border-slate-200 bg-white shadow-md lg:grid-cols-[0.9fr_1.1fr]">
           <div className="flex min-h-72 items-end bg-gradient-to-br from-academic-blue to-academic-navy p-8 text-white">
-            <div>
-              <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-blue-100">Featured capability</p>
-              <p className="max-w-sm text-sm leading-relaxed text-gray-200">A real laboratory photograph can replace this temporary visual without changing the surrounding layout.</p>
-            </div>
+            <p className="text-sm font-semibold uppercase tracking-wider text-blue-100">Featured capability</p>
           </div>
           <div className="p-8 lg:p-10">
             <h2 className="mb-4 text-academic-navy">Sonification and Ambisonics Laboratory</h2>

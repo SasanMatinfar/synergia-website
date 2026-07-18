@@ -21,7 +21,7 @@ export default function ResearchThemesPreview() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          {researchThemes.map((theme) => (
+          {researchThemes.filter((theme) => theme.kind === 'research-theme').map((theme) => (
             <Link key={theme.id} href={`/research#${theme.id}`}>
               <div
                 className={`rounded-lg p-6 border transition-all hover:shadow-md cursor-pointer h-full ${cardClassName}`}
@@ -30,7 +30,7 @@ export default function ResearchThemesPreview() {
                     {theme.title}
                   </h3>
                   <p className="text-sm text-academic-gray leading-relaxed">
-                    {theme.subtitle}
+                    {theme.description}
                   </p>
                 </div>
             </Link>

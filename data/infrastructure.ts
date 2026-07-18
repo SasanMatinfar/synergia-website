@@ -110,16 +110,15 @@ export const infrastructure: Infrastructure[] = [
   },
   {
     id: 'vibroacoustic-hardware',
-    name: 'Vibroacoustic Sensing & Feedback Hardware',
-    shortDescription: 'Tactile feedback devices and sensor systems',
+    name: 'Vibroacoustic Sensing Hardware',
+    shortDescription: 'Sensors and systems for capturing interaction-generated vibrations',
     fullDescription:
-      'Custom-designed vibroacoustic devices for delivering tactile feedback to surgeons. Includes transducers, feedback controllers, and integration systems for testing tactile information channels in surgical workflows.',
+      'Experimental vibroacoustic sensing systems capture structural vibrations and interaction signals for analysis in surgical workflows. The platform supports studies of how these signals can complement visual and auditory information.',
     capabilities: [
-      'Haptic feedback generation',
-      'Vibration pattern design',
+      'Vibroacoustic signal capture',
+      'Vibration analysis',
       'Sensor integration',
-      'Wearable device testing',
-      'Multi-point feedback systems',
+      'Interaction-event characterization',
       'Performance characterization',
     ],
     location: 'TUM CAMP',
