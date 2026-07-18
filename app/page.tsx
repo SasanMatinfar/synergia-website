@@ -135,17 +135,17 @@ export default function HomePage() {
 
       <section className="section-container">
         <article className="grid overflow-hidden rounded-xl border border-slate-200 bg-white shadow-md lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="flex min-h-72 items-end bg-gradient-to-br from-academic-blue to-academic-navy p-8 text-white">
-            <p className="text-sm font-semibold uppercase tracking-wider text-blue-100">Featured capability</p>
+          <div className="relative min-h-72 overflow-hidden">
+            <Image src="/images/infrastructure/sonification-ambisonics-laboratory.jpg" alt="Full-sphere loudspeaker array in the Sonification and Ambisonics Laboratory" fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover object-[55%_50%]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-academic-navy/75 via-transparent to-transparent" aria-hidden="true" />
+            <p className="absolute bottom-6 left-7 text-sm font-semibold uppercase tracking-wider text-white">Featured capability</p>
           </div>
           <div className="p-8 lg:p-10">
-            <h2 className="mb-4 text-academic-navy">Sonification and Ambisonics Laboratory</h2>
+            <h2 className="mb-4 text-academic-navy">Immersive Spatial Audio</h2>
             <p className="mb-7 text-lg leading-relaxed text-academic-gray">
-              The laboratory supports controlled multisensory, spatial-audio, sonification, XR,
-              soundscape, and surgical-interaction experiments. It connects technical platform
-              development with systematic studies of perception and interaction.
+              A full-sphere third-order Ambisonics environment for surgical sonification, spatial auditory guidance, and realistic soundscape reproduction.
             </p>
-            <Link href="/research-infrastructure#ambisonics-lab" className="btn-primary">Explore the Infrastructure</Link>
+            <Link href="/research-infrastructure/sonification-ambisonics-laboratory" className="btn-primary">Explore the laboratory</Link>
           </div>
         </article>
       </section>

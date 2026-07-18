@@ -11,64 +11,94 @@ export interface Infrastructure {
   location: string;
   image?: string;
   featured?: boolean;
+  industrialCollaboration?: {
+    collaboratorId: 'syntheseyes' | 'surag-medical';
+    description: string;
+  };
 }
+
+export interface InfrastructureOverview {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  highlights: string[];
+  itemId: string;
+  image?: string;
+  imageAlt?: string;
+  visualLabel: string;
+  partnerId?: 'syntheseyes' | 'surag-medical';
+}
+
+export const infrastructureOverview: InfrastructureOverview[] = [
+  {
+    id: 'ambisonics-lab',
+    slug: 'sonification-ambisonics-laboratory',
+    title: 'Sonification and Ambisonics Laboratory',
+    description: 'A full-sphere environment for surgical sonification, spatial auditory guidance, and controlled perception research.',
+    highlights: ['Third-order Ambisonics', '16-channel full-sphere array', 'Real-time sonification', 'Perceptual audio evaluation'],
+    itemId: 'ambisonics-lab',
+    image: '/images/infrastructure/sonification-ambisonics-laboratory.jpg',
+    imageAlt: 'Full-sphere loudspeaker array in the Sonification and Ambisonics Laboratory',
+    visualLabel: 'Spatial Audio',
+  },
+  {
+    id: 'xr',
+    slug: 'xr-immersive-environments',
+    title: 'XR and Immersive Environments',
+    description: 'Interactive visual and auditory environments for multimodal surgical simulation and interface evaluation.',
+    highlights: ['Medical XR', 'Surgical simulation', 'Interactive guidance', 'Spatial audio integration'],
+    itemId: 'xr-systems',
+    image: '/images/infrastructure/syntheseyes-xr-simulation.png',
+    imageAlt: 'SynthesEyes retinal digital-twin simulation visualization',
+    visualLabel: 'XR',
+    partnerId: 'syntheseyes',
+  },
+  {
+    id: 'vibroacoustic',
+    slug: 'vibroacoustic-sensing',
+    title: 'Vibroacoustic Sensing',
+    description: 'Experimental sensing platforms for investigating interaction-generated signals and intelligent surgical guidance.',
+    highlights: ['Signal capture', 'Sensor integration', 'Vibration analysis', 'Event characterization'],
+    itemId: 'vibroacoustic-hardware',
+    image: '/images/infrastructure/surag-vibroacoustic-sensing.png',
+    imageAlt: 'SURAG vibroacoustic sensor attached to a surgical instrument',
+    visualLabel: 'Vibroacoustics',
+    partnerId: 'surag-medical',
+  },
+  {
+    id: 'clinical-setups',
+    slug: 'surgical-clinical-recording-setups',
+    title: 'Surgical and Clinical Recording Setups',
+    description: 'Clinically informed environments for ophthalmic simulation, tracking, performance measurement, and validation.',
+    highlights: ['Ophthalmic simulation', 'Instrument tracking', 'Performance measurement', 'Clinical evaluation'],
+    itemId: 'ophthalmic-simulation',
+    image: '/images/infrastructure/clinical-recording-setup.png',
+    imageAlt: 'Stereo microphones and multichannel audio recorder used for clinical research recordings',
+    visualLabel: 'Clinical Research',
+  },
+];
 
 export const infrastructure: Infrastructure[] = [
   {
     id: 'ambisonics-lab',
     name: 'Ambisonics Laboratory',
-    shortDescription: 'Immersive 3rd-order spatial audio environment',
+    shortDescription: 'Integrated environment for sonification, spatial audio, and auditory perception research',
     fullDescription:
-      'State-of-the-art 3rd-order Ambisonics listening facility with 16 loudspeaker arrangement. This immersive environment enables creation of realistic OR soundscapes, testing of surgical sonification designs, and human perception studies in fully controlled acoustic conditions. Supports research in spatial audio, auditory display, and multisensory interaction.',
+      'The laboratory combines a 16-loudspeaker, third-order Ambisonics array with real-time sonification and spatial-audio software. It supports controlled reproduction of operating-room soundscapes, binaural and loudspeaker-based rendering, computational auditory-display design, and perceptual evaluation of multisensory interaction.',
     capabilities: [
-      '3rd-order Ambisonics (16 channel)',
-      'Customizable speaker geometry',
-      'Spatial audio rendering and simulation',
+      'Third-order Ambisonics loudspeaker array (16 channels)',
+      'Spatial audio and binaural rendering',
+      'Real-time sonification',
       'OR soundscape reproduction',
-      'Human perception experiments',
-      'Listening panel sessions',
+      'Perceptual audio evaluation',
+      'Immersive auditory interaction',
+      'Computational auditory displays',
       'Audio recording and analysis',
     ],
     location: 'TUM CAMP',
     image: 'placeholder-ambisonics-lab.jpg',
     featured: true,
-  },
-  {
-    id: 'surgical-sonification-platform',
-    name: 'Surgical Sonification Platform',
-    shortDescription: 'Real-time sonification of surgical data streams',
-    fullDescription:
-      'Software and hardware platform for converting surgical scene analysis, AI output, and instrument tracking into real-time auditory signals. Integrates with surgical simulator environments and real OR recordings to develop and test sonification algorithms.',
-    capabilities: [
-      'Real-time audio synthesis',
-      'Multi-channel audio output',
-      'Integration with AI pipelines',
-      'Instrument tracking sonification',
-      'Proximity and confidence encoding',
-      'Custom sonification design tools',
-      'Evaluation frameworks',
-    ],
-    location: 'TUM CAMP',
-    image: 'placeholder-sonification-platform.jpg',
-    featured: true,
-  },
-  {
-    id: 'or-soundscape-simulation',
-    name: 'OR Soundscape Simulation Suite',
-    shortDescription: 'Realistic operating room acoustic environment modeling',
-    fullDescription:
-      'Computational modeling and simulation of operating room acoustic environments. Enables testing of communication systems, alarm designs, and background noise scenarios. Used for designing optimized acoustic architectures for surgical environments.',
-    capabilities: [
-      'Acoustic environment simulation',
-      'Alarm and alert design testing',
-      'Communication system optimization',
-      'Noise impact assessment',
-      'Soundscape generation',
-      'Virtual OR reproduction',
-    ],
-    location: 'TUM CAMP / TU Dresden CeTI',
-    image: 'placeholder-or-soundscape.jpg',
-    featured: false,
   },
   {
     id: 'ophthalmic-simulation',
@@ -107,6 +137,10 @@ export const infrastructure: Infrastructure[] = [
     location: 'TUM CAMP / TUM MAPS',
     image: 'placeholder-xr-systems.jpg',
     featured: false,
+    industrialCollaboration: {
+      collaboratorId: 'syntheseyes',
+      description: 'The project benefits from SynthesEyes’ ophthalmic surgical simulation technology, which provides realistic virtual environments for developing and evaluating multisensory guidance methods.',
+    },
   },
   {
     id: 'vibroacoustic-hardware',
@@ -124,8 +158,45 @@ export const infrastructure: Infrastructure[] = [
     location: 'TUM CAMP',
     image: 'placeholder-vibroacoustic.jpg',
     featured: false,
+    industrialCollaboration: {
+      collaboratorId: 'surag-medical',
+      description: 'Collaboration with SURAG Medical contributes vibroacoustic sensing hardware, technical expertise, and knowledge exchange for research into multimodal surgical sensing and intelligent guidance.',
+    },
   },
 ];
+
+export const ambisonicsSpecifications = [
+  ['Ambisonics order', 'Third order'],
+  ['Loudspeaker array', '16 × Genelec 8030C'],
+  ['Spatial coverage', 'Full sphere'],
+  ['Sweet spot', 'Approximately 1 m diameter'],
+  ['Listening position', 'Fixed central position, seated or standing'],
+  ['Rendering framework', 'Max/MSP with IRCAM SPAT5'],
+  ['Audio interface', 'MOTU 16A'],
+] as const;
+
+export const ambisonicsResearchCapabilities = [
+  'Real-time surgical sonification',
+  'Spatial auditory guidance',
+  'Operating-room soundscape reproduction',
+  'Perceptual evaluation of auditory displays',
+  'Multisensory XR experiments',
+  'Binaural and loudspeaker-based rendering',
+  'Studies of localization, targeting, and context awareness',
+] as const;
+
+export const ambisonicsTechnicalImplementation = [
+  '16 independently driven analog output channels',
+  'Balanced XLR signal paths',
+  'MOTU 16A interface',
+  'Max/MSP implementation',
+  'IRCAM SPAT5 spatial rendering',
+  'Custom adaptable aluminium frame',
+  'Four lower, eight middle, and four upper loudspeakers',
+  'Approximate 45-degree inclination of upper and lower loudspeaker layers',
+  'Fixed central listening position',
+  'Geometry specified using three-dimensional loudspeaker coordinates',
+] as const;
 
 export const getFeaturedInfrastructure = (): Infrastructure[] => {
   return infrastructure.filter((item) => item.featured);

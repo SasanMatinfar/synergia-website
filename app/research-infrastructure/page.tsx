@@ -1,51 +1,64 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
 import PageHero from '@/components/PageHero';
-import { infrastructure } from '@/data/infrastructure';
+import { getCollaboratorById } from '@/data/collaborators';
+import { infrastructureOverview, type InfrastructureOverview } from '@/data/infrastructure';
 
 export const metadata: Metadata = {
   title: 'Infrastructure',
-  description: 'Scientific capabilities for spatial audio, XR, surgical simulation, sensing, and multimodal interaction.',
+  description: 'Research laboratories and experimental platforms supporting Synergia.',
 };
 
-const capabilityGroups = [
-  { id: 'ambisonics-lab', title: 'Sonification and Ambisonics Laboratory', itemIds: ['ambisonics-lab'], intro: 'A controlled environment for spatial-audio rendering, auditory-display design, soundscape simulation, and perception studies.' },
-  { id: 'spatial-audio', title: 'Spatial Audio System', itemIds: ['surgical-sonification-platform', 'or-soundscape-simulation'], intro: 'Platforms for mapping computational and surgical information to auditory signals and reproducible acoustic scenes.' },
-  { id: 'xr', title: 'XR and Immersive Environments', itemIds: ['xr-systems'], intro: 'Visual and auditory environments for prototyping and evaluating multimodal interfaces.' },
-  { id: 'clinical-setups', title: 'Surgical and Clinical Recording Setups', itemIds: ['ophthalmic-simulation'], intro: 'Clinically informed simulation contexts for instrument tracking, performance measurement, and feedback studies.' },
-  { id: 'vibroacoustic', title: 'Vibroacoustic Sensing', itemIds: ['vibroacoustic-hardware'], intro: 'Experimental sensing and feedback channels for investigating non-visual information transfer.' },
-];
+function InfrastructureCard({ entry, featured = false }: { entry: InfrastructureOverview; featured?: boolean }) {
+  const partner = entry.partnerId ? getCollaboratorById(entry.partnerId) : undefined;
+
+  return (
+    <article id={entry.id} className={`scroll-mt-28 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm ${featured ? 'lg:grid lg:grid-cols-[1.3fr_0.7fr]' : 'flex h-full flex-col'}`}>
+      <div className={`relative overflow-hidden bg-gradient-to-br from-academic-navy via-academic-blue to-slate-500 ${featured ? 'h-72 sm:h-80 lg:h-auto lg:min-h-[28rem]' : 'h-52'}`}>
+        {entry.image ? (
+          <Image src={entry.image} alt={entry.imageAlt ?? `${entry.title} research environment`} fill sizes={featured ? '(min-width: 1024px) 65vw, 100vw' : '(min-width: 1024px) 33vw, 100vw'} className="object-cover object-center" />
+        ) : (
+          <div className="absolute inset-0 flex items-end p-7" aria-hidden="true">
+            <span className="text-3xl font-semibold tracking-tight text-white/90">{entry.visualLabel}</span>
+            <span className="absolute right-8 top-7 h-24 w-24 rounded-full border border-white/20" />
+            <span className="absolute right-20 top-20 h-32 w-32 rounded-full border border-white/10" />
+          </div>
+        )}
+        {partner?.logo && (
+          <div className="absolute bottom-4 right-4 flex h-14 w-36 items-center justify-center rounded-lg bg-white/95 px-3 py-2 shadow-md" aria-label={`Technology contributed through collaboration with ${partner.name}`}>
+            <Image src={`/logos/${partner.logo}`} alt={`${partner.name} logo`} width={128} height={48} className="max-h-10 w-auto max-w-28 object-contain" />
+          </div>
+        )}
+      </div>
+      <div className={`flex flex-1 flex-col ${featured ? 'p-8 lg:justify-center lg:p-10' : 'p-6'}`}>
+        <h2 className={`mb-3 text-academic-navy ${featured ? 'text-heading-md' : 'text-heading-sm'}`}>{entry.title}</h2>
+        <p className="mb-5 text-sm leading-relaxed text-academic-gray">{entry.description}</p>
+        <ul className={`mb-7 grid gap-2 text-sm text-academic-navy ${featured ? 'sm:grid-cols-2' : ''}`}>
+          {entry.highlights.map((highlight) => <li key={highlight} className="flex gap-2"><span className="text-academic-blue" aria-hidden="true">•</span>{highlight}</li>)}
+        </ul>
+        <div className="mt-auto">
+          <Link href={`/research-infrastructure/${entry.slug}`} className="btn-primary" aria-label={`Explore ${entry.title}`}>Explore Laboratory</Link>
+        </div>
+      </div>
+    </article>
+  );
+}
 
 export default function ResearchInfrastructurePage() {
+  const [flagship, ...supportingInfrastructure] = infrastructureOverview;
+
   return (
     <>
-      <PageHero title="Infrastructure" description="Experimental environments and technical platforms supporting controlled studies, system development, and clinically informed evaluation." />
-      {capabilityGroups.map((group, index) => {
-        const items = group.itemIds.map((id) => infrastructure.find((item) => item.id === id)).filter((item): item is (typeof infrastructure)[number] => Boolean(item));
-        if (items.length === 0) return null;
-        const isSingleItem = items.length === 1;
-        return (
-          <section id={group.id} key={group.id} className={`scroll-mt-28 ${index % 2 ? 'bg-academic-light' : ''}`}>
-            <div className="section-container">
-              <h2 className="mb-4 text-academic-navy">{group.title}</h2>
-              <p className="mb-8 max-w-4xl text-lg text-academic-gray">{group.intro}</p>
-              <div className="grid gap-6 lg:grid-cols-2">
-                {items.map((item) => (
-                  <article key={item.id} className="card p-7">
-                    {!isSingleItem && <h3 className="mb-2 text-heading-sm text-academic-navy">{item.name}</h3>}
-                    <p className="mb-4 font-semibold text-academic-blue">{item.shortDescription}</p>
-                    <p className="mb-6 text-sm leading-relaxed text-academic-gray">{item.fullDescription}</p>
-                    <h4 className="mb-3 text-base text-academic-navy">Supported activities</h4>
-                    <ul className="space-y-2 text-sm text-academic-gray">
-                      {item.capabilities.map((capability) => <li key={capability}>• {capability}</li>)}
-                    </ul>
-                    <p className="mt-6 border-t border-slate-200 pt-4 text-xs text-academic-gray"><strong>Location:</strong> {item.location}</p>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </section>
-        );
-      })}
+      <PageHero title="Infrastructure" description="Research laboratories and experimental platforms supporting sonification, immersive interaction, multimodal sensing, and clinical evaluation." />
+      <section className="section-container">
+        <div className="mb-8">
+          <InfrastructureCard entry={flagship} featured />
+        </div>
+        <div className="grid items-stretch gap-7 md:grid-cols-2 lg:grid-cols-3">
+          {supportingInfrastructure.map((entry) => <InfrastructureCard key={entry.id} entry={entry} />)}
+        </div>
+      </section>
     </>
   );
 }
