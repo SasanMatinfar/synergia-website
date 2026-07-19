@@ -203,6 +203,46 @@ export const ambisonicsTechnicalImplementation = [
   'Geometry specified using three-dimensional loudspeaker coordinates',
 ] as const;
 
+export const ambisonicsAcknowledgements = [
+  {
+    name: 'Dr. Ulrich Eck',
+    role: 'Scientific and Technical Contributor',
+    affiliations: [
+      'Chair for Computer Aided Medical Procedures (CAMP)',
+      'Technical University of Munich',
+    ],
+    acknowledgement:
+      'The development and implementation of the Sonification & Ambisonics Laboratory greatly benefited from the expertise, guidance, and support of Dr. Ulrich Eck during the conception and realization of the laboratory infrastructure.',
+    links: [
+      {
+        label: 'CAMP profile',
+        href: 'https://www.cs.cit.tum.de/camp/members/ulrich-eck/',
+      },
+    ],
+  },
+  {
+    name: 'Bardia Tamizkar',
+    role: 'Technical Contributor',
+    affiliations: [],
+    acknowledgement:
+      'We gratefully acknowledge Bardia Tamizkar for his invaluable engineering support in the design and construction of the Ambisonics loudspeaker cage, as well as his hands-on technical assistance during the implementation and assembly of the laboratory infrastructure. His expertise played an important role in realizing the physical Ambisonics laboratory.',
+    links: [
+      {
+        label: 'LinkedIn',
+        href: 'https://www.linkedin.com/in/bardia-tamizkar-767496178',
+      },
+      {
+        label: 'Company Website',
+        href: 'https://sapabuildingsystem.com',
+      },
+      {
+        label: 'Email',
+        href: 'mailto:bardia.civil@gmail.com',
+      },
+    ],
+  },
+] as const;
+
 export const getFeaturedInfrastructure = (): Infrastructure[] => {
   return infrastructure.filter((item) => item.featured);
 };

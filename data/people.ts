@@ -104,7 +104,23 @@ export const researchTeam: TeamMember[] = [
   },
 ];
 
-export const clinicalTeam: TeamMember[] = [
+export const scientificCollaborators: TeamMember[] = [
+  {
+    id: 'ulrich-eck',
+    name: 'Dr. Ulrich Eck',
+    title: 'Senior Researcher',
+    affiliations: [
+      'Chair for Computer Aided Medical Procedures (CAMP)',
+      'Technical University of Munich',
+    ],
+    role: 'Scientific Collaborator',
+    website: 'https://www.cs.cit.tum.de/camp/members/ulrich-eck/',
+    image: 'ulrich-eck.jpg',
+    bio: 'Research interests include medical extended reality, computer-assisted interventions, immersive visualization, surgical navigation, and human-centered medical technologies. He contributed significantly to the conception, development, and implementation of the project’s Sonification and Ambisonics Laboratory and experimental infrastructure.',
+  },
+];
+
+export const clinicalMedicalCollaborators: TeamMember[] = [
   {
     id: 'peter-charbel-issa',
     name: 'Univ.-Prof. Dr. Dr. med. Peter Charbel Issa',
@@ -172,6 +188,7 @@ export const allTeamMembers = [
   ...principalInvestigators,
   ...coordinationTeam,
   ...researchTeam,
-  ...clinicalTeam,
+  ...scientificCollaborators,
+  ...clinicalMedicalCollaborators,
   ...externalCollaborators,
 ];

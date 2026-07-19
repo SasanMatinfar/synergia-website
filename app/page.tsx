@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { collaborators } from '@/data/collaborators';
 import NewsEventCard from '@/components/news-events/NewsEventCard';
 import { publishedNewsEvents } from '@/data/newsEvents';
+import AmbisonicsLabVideo from '@/components/infrastructure/AmbisonicsLabVideo';
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -125,10 +126,13 @@ export default function HomePage() {
 
       <section className="section-container">
         <article className="grid overflow-hidden rounded-xl border border-slate-200 bg-white shadow-md lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="relative min-h-72 overflow-hidden">
-            <Image src="/images/infrastructure/sonification-ambisonics-laboratory.jpg" alt="Full-sphere loudspeaker array in the Sonification and Ambisonics Laboratory" fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover object-[55%_50%]" />
-            <div className="absolute inset-0 bg-gradient-to-t from-academic-navy/75 via-transparent to-transparent" aria-hidden="true" />
-            <p className="absolute bottom-6 left-7 text-sm font-semibold uppercase tracking-wider text-white">Featured capability</p>
+          <div className="overflow-hidden bg-academic-navy">
+            <div className="relative min-h-64 overflow-hidden">
+              <Image src="/images/infrastructure/sonification-ambisonics-laboratory.jpg" alt="Full-sphere loudspeaker array in the Sonification and Ambisonics Laboratory" fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover object-[55%_50%]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-academic-navy/75 via-transparent to-transparent" aria-hidden="true" />
+              <p className="absolute bottom-5 left-7 text-sm font-semibold uppercase tracking-wider text-white">Featured capability</p>
+            </div>
+            <AmbisonicsLabVideo compact />
           </div>
           <div className="p-8 lg:p-10">
             <h2 className="mb-4 text-academic-navy">Immersive Spatial Audio</h2>

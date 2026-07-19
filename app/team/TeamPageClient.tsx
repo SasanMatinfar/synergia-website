@@ -6,7 +6,8 @@ import {
   principalInvestigators,
   coordinationTeam,
   researchTeam,
-  clinicalTeam,
+  scientificCollaborators,
+  clinicalMedicalCollaborators,
   formerTeamMembers,
   externalCollaborators,
 } from '@/data/people';
@@ -331,17 +332,34 @@ export default function TeamPageClient() {
         </div>
       </section>
 
-      {clinicalTeam.length > 0 && <section className="section-container bg-academic-light py-9 md:py-12">
+      {scientificCollaborators.length > 0 && <section className="section-container bg-academic-light py-9 md:py-12">
         <div className="mx-auto max-w-6xl">
           <div className="mb-6">
-            <h2 className="text-heading-lg font-bold text-academic-navy mb-2">
-              Clinical Collaborators
+            <h2 className="mb-2 text-heading-md font-bold text-academic-navy">
+              Scientific Collaborator
             </h2>
             <div className="h-1 w-16 bg-academic-blue rounded-full"></div>
           </div>
 
           <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 md:gap-7 lg:grid-cols-3">
-            {clinicalTeam.map((member) => (
+            {scientificCollaborators.map((member) => (
+              <TeamMemberCard key={member.id} member={member} />
+            ))}
+          </div>
+        </div>
+      </section>}
+
+      {clinicalMedicalCollaborators.length > 0 && <section className="section-container py-9 md:py-12">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-6">
+            <h2 className="mb-2 text-heading-lg font-bold text-academic-navy">
+              Clinical &amp; Medical Collaborators
+            </h2>
+            <div className="h-1 w-16 rounded-full bg-academic-blue"></div>
+          </div>
+
+          <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 md:gap-7 lg:grid-cols-3">
+            {clinicalMedicalCollaborators.map((member) => (
               <TeamMemberCard key={member.id} member={member} />
             ))}
           </div>

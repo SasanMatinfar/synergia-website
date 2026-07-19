@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import { ambisonicsResearchCapabilities, ambisonicsSpecifications, ambisonicsTechnicalImplementation } from '@/data/infrastructure';
+import { ambisonicsAcknowledgements, ambisonicsResearchCapabilities, ambisonicsSpecifications, ambisonicsTechnicalImplementation } from '@/data/infrastructure';
 import ExpandableImage from './ExpandableImage';
+import AmbisonicsLabVideo from './AmbisonicsLabVideo';
 
 export default function AmbisonicsLaboratory({ showHeading = true }: { showHeading?: boolean }) {
   return (
@@ -16,6 +17,11 @@ export default function AmbisonicsLaboratory({ showHeading = true }: { showHeadi
             <Image src="/images/infrastructure/sonification-ambisonics-laboratory.jpg" alt="Full-sphere Ambisonics laboratory showing the aluminium frame and surrounding loudspeaker array" width={1280} height={960} sizes="(min-width: 1280px) 1152px, 100vw" className="h-auto w-full" />
           </div>
           <figcaption className="mt-3 text-sm text-academic-gray">The 16-channel full-sphere Ambisonics array installed at the Sonification and Ambisonics Laboratory.</figcaption>
+        </figure>
+
+        <figure className="mb-14">
+          <AmbisonicsLabVideo />
+          <figcaption className="mt-3 text-sm text-academic-gray">Animated visualization of the full-sphere laboratory structure and loudspeaker arrangement.</figcaption>
         </figure>
 
         <div className="mb-14 grid gap-12 lg:grid-cols-[1.05fr_0.95fr]">
@@ -57,6 +63,42 @@ export default function AmbisonicsLaboratory({ showHeading = true }: { showHeadi
             {ambisonicsTechnicalImplementation.map((detail) => <li key={detail} className="flex gap-3"><span className="text-academic-blue" aria-hidden="true">•</span>{detail}</li>)}
           </ul>
         </details>
+
+        <section aria-labelledby="laboratory-acknowledgements" className="mt-12 border-t border-slate-200 pt-10">
+          <div className="mb-6 max-w-3xl">
+            <h3 id="laboratory-acknowledgements" className="mb-3 text-heading-sm text-academic-navy">Acknowledgements &amp; Technical Contributions</h3>
+            <p className="text-sm leading-relaxed text-academic-gray">
+              The following acknowledgements recognize scientific and engineering contributions to the laboratory infrastructure without indicating formal project membership.
+            </p>
+          </div>
+          <div className="grid items-start gap-5 md:grid-cols-2">
+            {ambisonicsAcknowledgements.map((contributor) => (
+              <article key={contributor.name} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+                <p className="mb-1 text-xs font-semibold uppercase tracking-[0.12em] text-academic-blue">{contributor.role}</p>
+                <h4 className="mb-2 text-lg font-semibold text-academic-navy">{contributor.name}</h4>
+                {contributor.affiliations.length > 0 && (
+                  <div className="mb-3 text-xs font-medium leading-relaxed text-academic-gray">
+                    {contributor.affiliations.map((affiliation) => <p key={affiliation}>{affiliation}</p>)}
+                  </div>
+                )}
+                <p className="text-sm leading-relaxed text-academic-gray">{contributor.acknowledgement}</p>
+                <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
+                  {contributor.links.map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      target={link.href.startsWith('mailto:') ? undefined : '_blank'}
+                      rel={link.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                      className="text-sm font-semibold text-academic-blue hover:text-academic-navy"
+                    >
+                      {link.label} {link.href.startsWith('mailto:') ? '→' : '↗'}
+                    </a>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
       </div>
     </section>
   );
