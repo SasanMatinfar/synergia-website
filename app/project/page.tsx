@@ -16,7 +16,7 @@ export default function ProjectPage() {
       <PageHero title="The Synergia Project" description="An interdisciplinary initiative connecting intelligent medical systems with human multisensory perception." />
 
       <section className="section-container">
-        <div className="grid gap-12 lg:grid-cols-2">
+        <div className="grid gap-10 lg:grid-cols-2">
           <div>
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.16em] text-academic-blue">Why Synergia</p>
             <h2 className="mb-5 text-academic-navy">A demanding information environment</h2>
@@ -35,7 +35,7 @@ export default function ProjectPage() {
 
       <section className="bg-academic-light">
         <div className="section-container">
-          <div className="mb-10 max-w-3xl">
+          <div className="mb-8 max-w-3xl">
             <h2 className="mb-4 text-academic-navy">Scientific Objectives</h2>
             <p className="text-lg leading-relaxed text-academic-gray">Six interconnected objectives define the project’s scientific framework, guiding the development, evaluation, and clinical translation of multisensory interaction for computer-assisted medicine.</p>
           </div>
@@ -52,7 +52,7 @@ export default function ProjectPage() {
       </section>
 
       <section className="section-container">
-        <div className="mb-10 max-w-3xl">
+        <div className="mb-8 max-w-3xl">
           <h2 className="mb-4 text-academic-navy">Project Workflow</h2>
           <p className="text-lg leading-relaxed text-academic-gray">The experimental programme advances from passive perception studies to active navigation and, finally, realistic ophthalmic validation.</p>
         </div>
@@ -62,7 +62,7 @@ export default function ProjectPage() {
               src="/images/project/synergia-project-workflow.png"
               alt="Synergia project workflow showing three experimental stages: passive laboratory perception studies, active XR-based surgical navigation studies, and clinical pig-eye ophthalmic validation, together with common surgical tasks and evaluation dimensions."
               width={1536}
-              height={1024}
+              height={620}
               sizes="(min-width: 1280px) 1152px, (min-width: 768px) calc(100vw - 6rem), 900px"
               className="h-auto min-w-[900px] max-w-none md:min-w-0 md:max-w-full"
             />
@@ -73,7 +73,7 @@ export default function ProjectPage() {
 
       <section className="bg-academic-light">
         <div className="section-container">
-          <div className="mb-10 max-w-3xl">
+          <div className="mb-8 max-w-3xl">
             <h2 className="mb-4 text-academic-navy">Work Package Flow</h2>
             <p className="text-lg leading-relaxed text-academic-gray">WP1 establishes the experimental foundation. WP2 and WP3 develop auditory environments and sonification methods; WP4 and WP5 evaluate human performance, expertise, and learning; WP6 brings the optimized approach into clinical validation.</p>
           </div>
@@ -82,7 +82,7 @@ export default function ProjectPage() {
       </section>
 
       <section className="section-container">
-        <div className="mb-10 max-w-3xl">
+        <div className="mb-8 max-w-3xl">
           <h2 className="mb-4 text-academic-navy">Project Roadmap</h2>
           <p className="text-lg leading-relaxed text-academic-gray">A three-year progression from experimental platforms and models to human studies, clinical validation, and reusable research outputs.</p>
         </div>

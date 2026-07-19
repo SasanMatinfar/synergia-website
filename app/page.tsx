@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { collaborators } from '@/data/collaborators';
+import NewsEventCard from '@/components/news-events/NewsEventCard';
+import { publishedNewsEvents } from '@/data/newsEvents';
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -41,11 +43,6 @@ export default function HomePage() {
               audio, and vibroacoustic technologies to enable more intuitive guidance in
               computer-assisted medicine.
             </p>
-            <div>
-              <Link href="/project" className="btn-primary bg-white text-academic-navy hover:bg-blue-50">
-                Explore the Project
-              </Link>
-            </div>
           </div>
 
           <div className="mx-auto flex min-h-[22rem] w-full max-w-xl items-center justify-center rounded-2xl border border-white/20 bg-academic-navy/40 p-8 shadow-2xl sm:min-h-[24rem] lg:max-w-lg lg:p-10">
@@ -65,29 +62,108 @@ export default function HomePage() {
 
       <aside aria-label="Project funding" className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-4 px-4 py-5 sm:flex-row sm:px-6 lg:px-8">
-          <img src="/logos/optimized/dfg-logo.png" alt="Deutsche Forschungsgemeinschaft" className="h-12 w-auto object-contain sm:h-14" />
+          <Image src="/logos/optimized/dfg-logo.png" alt="Deutsche Forschungsgemeinschaft" width={180} height={56} className="h-12 w-auto object-contain sm:h-14" />
           <span className="hidden h-7 w-px bg-slate-300 sm:block" aria-hidden="true" />
-          <p className="text-center text-sm font-medium text-academic-gray">
-            Funded by the Deutsche Forschungsgemeinschaft (DFG)
-          </p>
+          <p className="text-center text-sm font-medium text-academic-gray">Funded by the Deutsche Forschungsgemeinschaft (DFG)</p>
         </div>
       </aside>
 
       <section className="section-container">
-        <div className="mb-10 max-w-3xl">
-          <h2 className="text-academic-navy">Core Research Areas</h2>
-        </div>
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-5">
-          {researchAreas.map(([title, description, href]) => (
-            <Link key={title} href={href} className="rounded-lg border border-slate-200 bg-slate-50 p-5 hover:border-academic-blue">
-              <h3 className="mb-3 text-lg text-academic-navy">{title}</h3>
-              <p className="text-sm leading-relaxed text-academic-gray">{description}</p>
-            </Link>
-          ))}
+        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
+          <div>
+            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.16em] text-academic-blue">The initiative</p>
+            <h2 className="text-academic-navy">Project Vision</h2>
+          </div>
+          <div>
+            <div className="space-y-5 text-lg leading-relaxed text-academic-gray">
+              <p>
+                Synergia is an interdisciplinary research project examining how intelligent systems can communicate clinically relevant information through perceptually meaningful visual and auditory interaction. It connects expertise in computer-assisted medicine, artificial intelligence, sonification, spatial audio, human perception, and clinical research.
+              </p>
+              <p>
+                The project addresses the challenge of supporting clinicians without adding unnecessary visual demand or cognitive burden. Its distinctive approach links fundamental perception research with realistic experimental platforms and clinical validation, allowing multisensory guidance methods to be studied systematically across controlled and applied settings.
+              </p>
+            </div>
+            <aside className="mt-7 rounded-lg border border-blue-200 border-l-4 border-l-academic-blue bg-blue-50/70 px-5 py-5" aria-labelledby="camp-sonification-team-heading">
+              <h3 id="camp-sonification-team-heading" className="mb-2 text-xl text-academic-navy">
+                Coordinated by the CAMP Sonification Team
+              </h3>
+              <p className="text-sm leading-relaxed text-academic-gray">
+                The Synergia project is scientifically coordinated through the CAMP Sonification Team at the Chair for Computer Aided Medical Procedures, Technical University of Munich. The team serves as the project’s central hub for sonification research, multisensory interaction, and experimental infrastructure.
+              </p>
+              <a
+                href="https://www.cs.cit.tum.de/camp/projects/2016/sonification/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-block text-sm font-semibold text-academic-blue hover:text-academic-navy"
+              >
+                Explore the CAMP Sonification Team →
+              </a>
+            </aside>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link href="/project" className="btn-primary">Explore the Project</Link>
+              <Link href="/team#partners" className="btn-secondary">Meet the Consortium</Link>
+            </div>
+          </div>
         </div>
       </section>
 
       <section className="bg-academic-light">
+        <div className="section-container">
+          <div className="mb-8 max-w-3xl">
+            <h2 className="text-academic-navy">Core Research Areas</h2>
+          </div>
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-5">
+            {researchAreas.map(([title, description, href]) => (
+              <Link key={title} href={href} className="rounded-lg border border-slate-200 bg-white p-5 hover:border-academic-blue">
+                <h3 className="mb-3 text-lg text-academic-navy">{title}</h3>
+                <p className="text-sm leading-relaxed text-academic-gray">{description}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-container">
+        <article className="grid overflow-hidden rounded-xl border border-slate-200 bg-white shadow-md lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="relative min-h-72 overflow-hidden">
+            <Image src="/images/infrastructure/sonification-ambisonics-laboratory.jpg" alt="Full-sphere loudspeaker array in the Sonification and Ambisonics Laboratory" fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover object-[55%_50%]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-academic-navy/75 via-transparent to-transparent" aria-hidden="true" />
+            <p className="absolute bottom-6 left-7 text-sm font-semibold uppercase tracking-wider text-white">Featured capability</p>
+          </div>
+          <div className="p-8 lg:p-10">
+            <h2 className="mb-4 text-academic-navy">Immersive Spatial Audio</h2>
+            <p className="mb-7 text-lg leading-relaxed text-academic-gray">
+              A full-sphere third-order Ambisonics environment for surgical sonification, spatial auditory guidance, and realistic soundscape reproduction.
+            </p>
+            <Link href="/research-infrastructure/sonification-ambisonics-laboratory" className="btn-primary">Explore the laboratory</Link>
+          </div>
+        </article>
+      </section>
+
+      {publishedNewsEvents.length > 0 && (
+        <section className="bg-academic-light">
+          <div className="section-container">
+            <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+              <div>
+                <h2 className="mb-3 text-academic-navy">Latest from Synergia</h2>
+                <p className="max-w-3xl text-lg text-academic-gray">
+                  Recent developments, events, demonstrations, and activities from the research programme.
+                </p>
+              </div>
+              <Link href="/news-events" className="shrink-0 font-semibold text-academic-blue">View all news and events →</Link>
+            </div>
+            <div className={`grid gap-7 ${publishedNewsEvents.length > 1 ? 'lg:grid-cols-2' : ''}`}>
+              {publishedNewsEvents.slice(0, 3).map((entry, index) => (
+                <div key={entry.slug} className={index === 0 && publishedNewsEvents.length > 1 ? 'lg:col-span-2' : ''}>
+                  <NewsEventCard entry={entry} featured={index === 0} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section>
         <div className="section-container">
           <h2 className="mb-4 text-academic-navy">Consortium</h2>
           <p className="mb-8 max-w-3xl text-lg text-academic-gray">
@@ -120,7 +196,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-container">
+      <section className="border-t border-slate-200 bg-academic-light">
+        <div className="section-container">
         <h2 className="mb-4 text-academic-navy">Collaborating Partners</h2>
         <div className="mb-7 grid grid-cols-2 gap-3 sm:grid-cols-3">
           {partnerPreview.map((partner) => (
@@ -130,44 +207,10 @@ export default function HomePage() {
             </a>
           ))}
         </div>
-        <Link href="/team#partners" className="font-semibold text-academic-blue">View all consortium institutions and partners →</Link>
-      </section>
-
-      <section className="section-container">
-        <article className="grid overflow-hidden rounded-xl border border-slate-200 bg-white shadow-md lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="relative min-h-72 overflow-hidden">
-            <Image src="/images/infrastructure/sonification-ambisonics-laboratory.jpg" alt="Full-sphere loudspeaker array in the Sonification and Ambisonics Laboratory" fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover object-[55%_50%]" />
-            <div className="absolute inset-0 bg-gradient-to-t from-academic-navy/75 via-transparent to-transparent" aria-hidden="true" />
-            <p className="absolute bottom-6 left-7 text-sm font-semibold uppercase tracking-wider text-white">Featured capability</p>
+          <div className="flex flex-wrap gap-5">
+            <Link href="/team#partners" className="btn-primary">Meet the Consortium</Link>
+            <Link href="/research#publications" className="btn-secondary">Explore Research Outputs</Link>
           </div>
-          <div className="p-8 lg:p-10">
-            <h2 className="mb-4 text-academic-navy">Immersive Spatial Audio</h2>
-            <p className="mb-7 text-lg leading-relaxed text-academic-gray">
-              A full-sphere third-order Ambisonics environment for surgical sonification, spatial auditory guidance, and realistic soundscape reproduction.
-            </p>
-            <Link href="/research-infrastructure/sonification-ambisonics-laboratory" className="btn-primary">Explore the laboratory</Link>
-          </div>
-        </article>
-      </section>
-
-      <section className="bg-academic-light">
-        <div className="section-container grid gap-8 lg:grid-cols-2">
-          <article className="rounded-xl border border-slate-200 bg-white p-8">
-            <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-academic-blue">Research Outputs</p>
-            <h2 className="mb-4 text-heading-md text-academic-navy">Publications and Scientific Resources</h2>
-            <p className="mb-7 text-lg leading-relaxed text-academic-gray">
-              Explore publications, preprints, software, datasets, and scientific resources emerging from the Synergia research programme.
-            </p>
-            <Link href="/research#publications" className="font-semibold text-academic-blue">View research outputs →</Link>
-          </article>
-          <article className="rounded-xl border border-slate-200 bg-white p-8">
-            <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-academic-blue">Project Activity</p>
-            <h2 className="mb-4 text-heading-md text-academic-navy">Events, Demonstrations, and Media</h2>
-            <p className="mb-7 text-lg leading-relaxed text-academic-gray">
-              Explore project events, laboratory demonstrations, scientific videos, conference activity, outreach, and documentation from the Synergia research programme.
-            </p>
-            <Link href="/media" className="font-semibold text-academic-blue">Open the media archive →</Link>
-          </article>
         </div>
       </section>
     </>

@@ -38,7 +38,7 @@ function InfrastructureCard({ entry, featured = false }: { entry: Infrastructure
           {entry.highlights.map((highlight) => <li key={highlight} className="flex gap-2"><span className="text-academic-blue" aria-hidden="true">•</span>{highlight}</li>)}
         </ul>
         <div className="mt-auto">
-          <Link href={`/research-infrastructure/${entry.slug}`} className="btn-primary" aria-label={`Explore ${entry.title}`}>Explore Laboratory</Link>
+          <Link href={`/research-infrastructure/${entry.slug}`} className="btn-primary" aria-label={`${entry.ctaLabel}: ${entry.title}`}>{entry.ctaLabel}</Link>
         </div>
       </div>
     </article>

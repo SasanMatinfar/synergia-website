@@ -4,6 +4,5 @@ export const siteNavigation = [
   { href: '/research', label: 'Research' },
   { href: '/research-infrastructure', label: 'Infrastructure' },
   { href: '/team', label: 'Team' },
-  { href: '/media', label: 'Media' },
   { href: '/about', label: 'About' },
 ] as const;

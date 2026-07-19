@@ -21,7 +21,8 @@ export default function Header() {
     '/infrastructure': '/research-infrastructure',
     '/ambisonics-lab': '/research-infrastructure',
     '/collaborators': '/team',
-    '/news': '/media',
+    '/news': '/news-events',
+    '/media': '/news-events',
     '/contact': '/about',
     '/contact/faq': '/about',
   };

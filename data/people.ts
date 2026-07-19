@@ -5,6 +5,7 @@ export interface TeamMember {
   name: string;
   title?: string;
   affiliation?: string;
+  affiliations?: string[];
   group?: string;
   role?: string;
   website?: string;
@@ -67,28 +68,39 @@ export const coordinationTeam: TeamMember[] = [
 
 export const researchTeam: TeamMember[] = [
   {
-    id: 'veronica-zuozzi',
-    name: 'Dr. Veronica Zuozzi',
-    title: 'Researcher',
-    affiliation: 'CAMP, Technical University of Munich',
-    role: 'Surgical Sonification & Human-AI Interaction',
+    id: 'veronica-ruozzi',
+    name: 'Dr. Veronica Ruozzi',
+    title: 'Senior Researcher',
+    affiliations: [
+      'Chair for Computer Aided Medical Procedures (CAMP)',
+      'Technical University of Munich',
+    ],
     image: 'veronica.jpeg',
+    bio: 'Surgical navigation, biomechanical modeling, and computer-assisted interventions.',
   },
   {
     id: 'wenhan-sun',
-    name: 'Wenhan Sun',
-    title: 'Researcher',
-    affiliation: 'CAMP, Technical University of Munich',
-    role: 'Medical Imaging & Multimodal Feedback',
+    name: 'Dr. Wenhan Sun',
+    title: 'Senior Researcher',
+    affiliations: [
+      'Chair of Social Affective Touch',
+      'TU Dresden',
+      'Chair for Computer Aided Medical Procedures (CAMP)',
+      'Technical University of Munich',
+    ],
     image: 'wenhan.jpeg',
+    bio: 'Cognitive neuroscience, multisensory perception, human cognition, and affective interaction.',
   },
   {
     id: 'hannes-firzlaff',
     name: 'Hannes Firzlaff',
     title: 'Researcher',
-    affiliation: 'CeTI, TU Dresden',
-    role: 'Perception & Auditory Interface Design',
+    affiliations: [
+      'Chair for Computer Aided Medical Procedures (CAMP)',
+      'Technical University of Munich',
+    ],
     image: 'hannes.jpeg',
+    bio: 'Digital signal processing, machine learning, and intelligent computational methods.',
   },
 ];
 

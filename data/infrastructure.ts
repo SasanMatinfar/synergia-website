@@ -27,6 +27,7 @@ export interface InfrastructureOverview {
   image?: string;
   imageAlt?: string;
   visualLabel: string;
+  ctaLabel: string;
   partnerId?: 'syntheseyes' | 'surag-medical';
 }
 
@@ -41,6 +42,7 @@ export const infrastructureOverview: InfrastructureOverview[] = [
     image: '/images/infrastructure/sonification-ambisonics-laboratory.jpg',
     imageAlt: 'Full-sphere loudspeaker array in the Sonification and Ambisonics Laboratory',
     visualLabel: 'Spatial Audio',
+    ctaLabel: 'Explore Laboratory',
   },
   {
     id: 'xr',
@@ -52,6 +54,7 @@ export const infrastructureOverview: InfrastructureOverview[] = [
     image: '/images/infrastructure/syntheseyes-xr-simulation.png',
     imageAlt: 'SynthesEyes retinal digital-twin simulation visualization',
     visualLabel: 'XR',
+    ctaLabel: 'Explore XR Environments',
     partnerId: 'syntheseyes',
   },
   {
@@ -64,6 +67,7 @@ export const infrastructureOverview: InfrastructureOverview[] = [
     image: '/images/infrastructure/surag-vibroacoustic-sensing.png',
     imageAlt: 'SURAG vibroacoustic sensor attached to a surgical instrument',
     visualLabel: 'Vibroacoustics',
+    ctaLabel: 'Explore Sensing Platform',
     partnerId: 'surag-medical',
   },
   {
@@ -76,6 +80,7 @@ export const infrastructureOverview: InfrastructureOverview[] = [
     image: '/images/infrastructure/clinical-recording-setup.png',
     imageAlt: 'Stereo microphones and multichannel audio recorder used for clinical research recordings',
     visualLabel: 'Clinical Research',
+    ctaLabel: 'Explore Recording Setups',
   },
 ];
 

@@ -42,7 +42,7 @@ function TeamMemberCard({ member, showRole = true }: { member: (typeof principal
   const isLong = (member.bio?.length ?? 0) > 220;
 
   return (
-    <div className="card p-6 hover:shadow-lg transition-shadow">
+    <div className="card p-5 hover:shadow-lg transition-shadow sm:p-6">
       {member.image ? (
         <div className="w-28 h-28 rounded-full mx-auto mb-4 overflow-hidden">
           <img
@@ -161,7 +161,7 @@ function TeamMemberCard({ member, showRole = true }: { member: (typeof principal
               {member.title}
             </p>
           )}
-          {member.affiliation && <div className="mb-3 space-y-1 text-center text-xs font-medium text-academic-gray">
+          {(member.affiliation || member.affiliations?.length) && <div className="mb-3 space-y-1 text-center text-xs font-medium text-academic-gray">
             {member.id === 'fairhurst' ? (
               <>
                 <a
@@ -227,6 +227,8 @@ function TeamMemberCard({ member, showRole = true }: { member: (typeof principal
                   Technical University of Munich
                 </a>
               </>
+            ) : member.affiliations?.length ? (
+              member.affiliations.map((affiliation) => <p key={affiliation}>{affiliation}</p>)
             ) : (
               <p>{member.affiliation}</p>
             )}
@@ -235,13 +237,13 @@ function TeamMemberCard({ member, showRole = true }: { member: (typeof principal
       )}
 
       {showRole && member.role && (
-        <div className="bg-academic-light rounded px-3 py-2 text-center mb-4">
+        <div className="mb-3 rounded bg-academic-light px-3 py-2 text-center">
           <p className="text-xs font-semibold text-academic-blue">{member.role}</p>
         </div>
       )}
 
       {member.bio && (
-        <div className="mb-4">
+        <div className="mb-3">
           <p className="text-sm text-academic-gray text-center leading-relaxed">
             {expanded || !isLong ? member.bio : preview}
           </p>
@@ -278,16 +280,16 @@ export default function TeamPageClient() {
     <div>
       <PageHero title="Team" />
 
-      <section className="section-container">
-        <div className="max-w-6xl mx-auto mb-20">
-          <div className="mb-8">
+      <section className="section-container py-10 md:py-14">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-6 md:mb-8">
             <h2 className="text-heading-lg font-bold text-academic-navy mb-2">
               Principal Investigators
             </h2>
             <div className="h-1 w-16 bg-academic-blue rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-7">
             {principalInvestigators.map((member) => (
               <TeamMemberCard key={member.id} member={member} showRole={false} />
             ))}
@@ -295,16 +297,16 @@ export default function TeamPageClient() {
         </div>
       </section>
 
-      <section className="section-container bg-academic-light">
-        <div className="max-w-6xl mx-auto mb-20">
-          <div className="mb-8">
+      <section className="section-container bg-academic-light py-10 md:py-14">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-6 md:mb-8">
             <h2 className="text-heading-lg font-bold text-academic-navy mb-2">
               Scientific Coordination
             </h2>
             <div className="h-1 w-16 bg-academic-blue rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-7 lg:grid-cols-3">
             {coordinationTeam.map((member) => (
               <TeamMemberCard key={member.id} member={member} />
             ))}
@@ -312,16 +314,16 @@ export default function TeamPageClient() {
         </div>
       </section>
 
-      <section className="section-container">
-        <div className="max-w-6xl mx-auto mb-20">
-          <div className="mb-8">
+      <section className="section-container py-10 md:py-14">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-6 md:mb-8">
             <h2 className="text-heading-lg font-bold text-academic-navy mb-2">
               Research Team
             </h2>
             <div className="h-1 w-16 bg-academic-blue rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-7 lg:grid-cols-3">
             {researchTeam.map((member) => (
               <TeamMemberCard key={member.id} member={member} />
             ))}
@@ -329,16 +331,16 @@ export default function TeamPageClient() {
         </div>
       </section>
 
-      {clinicalTeam.length > 0 && <section className="section-container bg-academic-light">
-        <div className="max-w-6xl mx-auto mb-20">
-          <div className="mb-8">
+      {clinicalTeam.length > 0 && <section className="section-container bg-academic-light py-9 md:py-12">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-6">
             <h2 className="text-heading-lg font-bold text-academic-navy mb-2">
               Clinical Collaborators
             </h2>
             <div className="h-1 w-16 bg-academic-blue rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-2 md:gap-7 lg:grid-cols-3">
             {clinicalTeam.map((member) => (
               <TeamMemberCard key={member.id} member={member} />
             ))}
@@ -346,21 +348,21 @@ export default function TeamPageClient() {
         </div>
       </section>}
 
-      <section id="partners" className="section-container scroll-mt-28">
+      <section id="partners" className="section-container scroll-mt-28 py-10 md:py-14">
         <div className="max-w-6xl mx-auto">
-          <div className="mb-8">
+          <div className="mb-6 md:mb-8">
             <h2 className="mb-2 text-heading-lg font-bold text-academic-navy">Consortium</h2>
             <div className="h-1 w-16 bg-academic-blue rounded-full"></div>
           </div>
-          <div className="space-y-8">
+          <div className="space-y-6">
             {consortiumUniversities.map((university) => {
               const units = collaborators
                 .filter((partner) => partner.parentId === university.id)
                 .sort((a, b) => a.sortOrder - b.sortOrder);
 
               return (
-                <article key={university.id} className="rounded-xl border border-slate-200 bg-slate-50 p-6 md:p-8">
-                  <div className="mb-7 flex flex-col gap-4 border-b border-slate-200 pb-6 sm:flex-row sm:items-center">
+                <article key={university.id} className="rounded-xl border border-slate-200 bg-slate-50 p-5 md:p-6">
+                  <div className="mb-5 flex flex-col gap-3 border-b border-slate-200 pb-5 sm:flex-row sm:items-center">
                     {university.logo && <img src={`/logos/${university.logo}`} alt={`${university.name} logo`} className="h-16 w-36 object-contain" />}
                     <h3 className="text-heading-md font-bold text-academic-navy">
                       {university.name}
@@ -381,12 +383,12 @@ export default function TeamPageClient() {
             })}
           </div>
 
-          <div className="mt-16 border-t border-slate-200 pt-16">
-            <div className="mb-8">
+          <div className="mt-10 border-t border-slate-200 pt-10 md:mt-12 md:pt-12">
+            <div className="mb-6 md:mb-8">
               <h2 className="mb-2 text-heading-lg font-bold text-academic-navy">Collaborating Partners</h2>
               <div className="h-1 w-16 rounded-full bg-academic-blue"></div>
             </div>
-            <div className="space-y-10">
+            <div className="space-y-8">
               {collaboratingPartnerGroups.map((category) => (
                 <section key={category.id} aria-labelledby={`partner-category-${category.id}`}>
                   <h3 id={`partner-category-${category.id}`} className="mb-5 text-heading-sm font-bold text-academic-navy">{category.title}</h3>
@@ -406,13 +408,13 @@ export default function TeamPageClient() {
         </div>
       </section>
 
-      <section className="section-container bg-academic-light">
+      <section className="section-container bg-academic-light py-10 md:py-14">
         <div className="max-w-6xl mx-auto">
-          <div className="mb-12">
+          <div className="mb-6 md:mb-8">
             <h2 className="mb-2 text-heading-lg font-bold text-academic-navy">Former Team Members</h2>
             <div className="h-1 w-16 rounded-full bg-slate-400"></div>
           </div>
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-7 lg:grid-cols-3">
             {formerTeamMembers.map((member) => (
               <TeamMemberCard key={member.id} member={member} showRole={false} />
             ))}
@@ -420,16 +422,16 @@ export default function TeamPageClient() {
         </div>
       </section>
 
-      {externalCollaborators.length > 0 && <section className="section-container">
-        <div className="max-w-6xl mx-auto mb-20">
-          <div className="mb-8">
+      {externalCollaborators.length > 0 && <section className="section-container py-10 md:py-14">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-6 md:mb-8">
             <h2 className="text-heading-lg font-bold text-academic-navy mb-2">
               External Collaborators
             </h2>
             <div className="h-1 w-16 bg-academic-blue rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-7 lg:grid-cols-3">
             {externalCollaborators.map((member) => (
               <TeamMemberCard key={member.id} member={member} />
             ))}
@@ -437,10 +439,10 @@ export default function TeamPageClient() {
         </div>
       </section>}
 
-      <section className="section-container bg-gradient-to-r from-academic-blue to-academic-navy text-white">
+      <section className="section-container bg-gradient-to-r from-academic-blue to-academic-navy py-10 text-white md:py-14">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-heading-md font-bold mb-4">Interested in Joining?</h2>
-          <p className="text-lg text-blue-100 mb-8">
+          <p className="mb-6 text-lg text-blue-100">
             We welcome enquiries from researchers, students, and collaborators interested in our
             multidisciplinary team.
           </p>
